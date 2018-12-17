@@ -256,3 +256,6 @@ pre {
 .location-name{
   margin: 0 0 1px;
 }
+.datepicker {
+  padding: 0px !important;
+}
