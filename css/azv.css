@@ -85,8 +85,8 @@ body {
   margin-left: -20px;
   margin-right: 25px;
   margin-top:-15px;
-  height: 6vh;
-  width: 6vh;
+  height: 7vh;
+  width: 7vh;
 }
 
 
@@ -269,7 +269,8 @@ pre {
 
 
 .margin-page{
-  margin-left: -35px
+  margin-left: -35px;
+  margin-top: 8px;
 }
 
 .azv-padding{
@@ -286,3 +287,10 @@ pre {
   padding: 0px !important;
 }
 
+.navbar-icon{
+  margin-left: -35px;
+}
+
+.navbar-icon-first{
+  margin-left: -5px;
+}
