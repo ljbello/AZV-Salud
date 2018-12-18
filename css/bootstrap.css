@@ -379,6 +379,13 @@ th {
   font-size: 30px;
   color:#6EAF22!important;
 }
+
+.page-glyphicon-home:before {
+  content: "\e021";
+  font-size: 25px;
+  color:#6EAF22!important;
+}
+
 .glyphicon-file:before {
   content: "\e022";
 }
