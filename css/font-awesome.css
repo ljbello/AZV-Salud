@@ -249,7 +249,8 @@
 
 .top-fa-home:before {
   content: "\f015";
-  font-size: 18px;
+  font-size: 25px;
+  margin-left: -10px;
   color:#6EAF22!important;
 }
 
@@ -1022,8 +1023,8 @@
 .top-fa-star-half-full:before,
 .top-fa-star-half-o:before {
   content: "\f123";
-  font-size: 18px;
-    margin-left: 20px;
+  font-size: 20px;
+  margin-left: -10px;
     color:#6EAF22!important;
 }
 
@@ -1031,7 +1032,7 @@
 .rating-fa-star-half-full:before,
 .rating-fa-star-half-o:before {
   content: "\f123";
-  font-size: 30px;
+  font-size: 35px;
     color:#6EAF22!important;
 }
 
@@ -2246,8 +2247,8 @@
 .top-fa-vcard:before,
  .top-fa-address-card:before {
    content: "\f2bb";
-   font-size: 18px;
-   margin-left: 10px;
+   font-size: 20px;
+   margin-left: -10px;
    color:#6EAF22!important;
  }
 

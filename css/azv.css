@@ -8,7 +8,7 @@ body {
 }
 
 .top{
-  margin-top: 15px;
+  margin-top: 9vh;
 }
 .row-top{
   margin-top: 35px;
@@ -81,13 +81,14 @@ body {
 }
 
 
-
 .img-logo {
-  margin-left: -10px;
-  margin-right: -25px;
+  margin-left: -20px;
+  margin-right: 25px;
   margin-top:-15px;
-  width:4em; height:4em;
+  height: 6vh;
+  width: 6vh;
 }
+
 
 @media (max-width: 700px) {
   .home-img { margin-right: -27px; }
@@ -255,4 +256,27 @@ pre {
 }
 .location-name{
   margin: 0 0 1px;
+}
+.navbar-page{
+  font-size: 12px;
+  webkit-font-smoothing: antialiased;
+  color: #919191;
+  margin-left: 5px;
+
+
+}
+
+
+.margin-page{
+  margin-left: -35px
+}
+
+.azv-padding{
+  margin-top: 10px
+
+}
+
+.azv-padding-home{
+  margin-top: 8px;
+
 }
