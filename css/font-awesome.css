@@ -1,9 +1,9 @@
 /*!
- *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
+*  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+*/
 /* FONT PATH
- * -------------------------- */
+* -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
@@ -179,7 +179,7 @@
   color: #ffffff;
 }
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-   readers do not read off random characters that represent icons */
+readers do not read off random characters that represent icons */
 .fa-glass:before {
   content: "\f000";
 }
@@ -249,7 +249,8 @@
 
 .top-fa-home:before {
   content: "\f015";
-  font-size: 18px;
+  font-size: 25px;
+  margin-left: -10px;
   color:#6EAF22!important;
 }
 
@@ -257,8 +258,8 @@
 .bottom-fa-home:before {
   content: "\f015";
   font-size: 35px;
-    margin-left: 20px;
-    margin-top: 35px;
+  margin-left: 20px;
+  margin-top: 35px;
 
 }
 .fa-file-o:before {
@@ -1015,24 +1016,32 @@
 .bottom-fa-star-half-o:before {
   content: "\f123";
   font-size: 35px;
-    color:#6EAF22!important;
+  color:#6EAF22!important;
+}
+
+.page-fa-star-half-empty:before,
+.page-fa-star-half-full:before,
+.page-fa-star-half-o:before {
+  content: "\f123";
+  font-size: 30px;
+  color:#6EAF22!important;
 }
 
 .top-fa-star-half-empty:before,
 .top-fa-star-half-full:before,
 .top-fa-star-half-o:before {
   content: "\f123";
-  font-size: 18px;
-    margin-left: 20px;
-    color:#6EAF22!important;
+  font-size: 20px;
+  margin-left: -10px;
+  color:#6EAF22!important;
 }
 
 .rating-fa-star-half-empty:before,
 .rating-fa-star-half-full:before,
 .rating-fa-star-half-o:before {
   content: "\f123";
-  font-size: 30px;
-    color:#6EAF22!important;
+  font-size: 35px;
+  color:#6EAF22!important;
 }
 
 .fa-location-arrow:before {
@@ -2244,28 +2253,34 @@
   content: "\f2bb";
 }
 .top-fa-vcard:before,
- .top-fa-address-card:before {
-   content: "\f2bb";
-   font-size: 18px;
-   margin-left: 10px;
-   color:#6EAF22!important;
- }
+.top-fa-address-card:before {
+  content: "\f2bb";
+  font-size: 20px;
+  margin-left: -10px;
+  color:#6EAF22!important;
+}
 
 
 
-  .contact-fa-vcard:before,
-   .contact-fa-address-card:before {
-     content: "\f2bb";
-     font-size: 35px;
-     color:#6EAF22!important;
-   }
+.contact-fa-vcard:before,
+.contact-fa-address-card:before {
+  content: "\f2bb";
+  font-size: 35px;
+  color:#6EAF22!important;
+}
 
- .bottom-fa-vcard:before,
-  .bottom-fa-address-card:before {
-    content: "\f2bb";
-    font-size: 35px;
-    color:#6EAF22!important;
-  }
+.bottom-fa-vcard:before,
+.bottom-fa-address-card:before {
+  content: "\f2bb";
+  font-size: 35px;
+  color:#6EAF22!important;
+}
+.page-fa-vcard:before,
+.page-fa-address-card:before {
+  content: "\f2bb";
+  font-size: 30px;
+  color:#6EAF22!important;
+}
 
 .fa-vcard-o:before,
 .fa-address-card-o:before {

@@ -29,29 +29,24 @@
 <body>
 
   <div class="container-fluid">
-    <!-- The justified navigation menu is meant for single line per list item.
-    Multiple lines will require custom code not provided by Bootstrap. -->
-    <br>
     <nav class="navbar navbar-fixed-top navbar-top">
-      <a class="navbar-brand" href="#">
-        <img src="img/azv_logo.jpeg" class="img-logo" alt="">
-      </a>
-      <div class="col-xs-2 col-md-1 footer-margin-top">
-        <a href="rating.html"><i class="fa top-fa-star-half-o"></i></a>
+      <div class="col-xs-2 col-md-1 text-center footer-margin-top">
+        <a class="navbar-brand" href="#">
+          <img src="img/azv_logo.jpeg" class="img-logo" alt="">
+        </a>
       </div>
-      <div class="col-xs-2 col-md-1 footer-margin-top">
-        <a href="contact.html"><i class="fa top-fa-address-card "></i></a>
+      <div class="col-xs-2 col-md-1 pull-left  footer-margin-top">
+        <a href="rating.html"><i class="fa top-fa-star-half-o azv-padding navbar-icon-first"></i></a>
       </div>
-      <span class="navbar-text pull-right">
-        <b><a href="home.html"><i class="glyphicon home-glyphicon-home">HOME</i></a></b>
-      </span>
+      <div class="col-xs-4 col-md-4 pull-left footer-margin-top">
+        <a href="contact.html"><i class="fa top-fa-address-card azv-padding navbar-icon"></i></a>
+      </div>
+      <div class="col-xs-3 col-md-6 footer-margin-top pull-right">
+        <a href="home.html" class="pull-right"><i class="glyphicon page-glyphicon-home margin-page"></i><b class="navbar-page">Home<b></a>
+      </div>
     </nav>
-    <br>
-    <br>
-    <br>
 
-
-    <div class="row">
+    <div class="row top">
       <div class="col-md-4 col-xs-2"><img class="azv-right home-img" src="img/azv_dr.png" /></div>
       <div class="col-md-6 col-xs-10">
         <section class="panel">
@@ -84,97 +79,97 @@
 </div> -->
 
 
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/azv.js"></script>
-
-
-  <script>
-
-    $(function () {
-
-      //azv_salud_doctor_list();
-
-      // test_data = '{"data":[{"id": "1","typeDoctor": "1","name": "Jose Gregorio Ortiz Tovar","type": "Ginecologo","location": [{"city": "puerto ayacucho estado amazonas","hospital": "doctor jose gregorio hernandez","phoneNumber": "0414-1516235"},{"city": "san fernando de apure estado apure","hospital": "doctor fernando giron gomez","phoneNumber": "0414-1516235"},{"city": "altagracia de orituco estado guarico","hospital": "doctor fermin marmol leon garcia","phoneNumber": "0414-1516235"}]},{"id": "2","typeDoctor": "2","name": "Jose Tovar","type": "Dermatologo","location": [{"city": "puerto ayacucho ","hospital": "doctor hernandez","phoneNumber": "0414-1516235"},{"city": "san fernando de apure estado apure","hospital": "doctor fernando giron gomez","phoneNumber": "0414-1516235"},{"city": "altagracia de orituco estado guarico","hospital": "doctor fermin marmol leon garcia","phoneNumber": "0414-1516235"}]}]}';
-
-      test_data = '[{"id": 1,"typedoctor": 1,"name": "Noris Yagua-Velasquez","type": "Doctor di Cas","location": [{"city": "Noord 63","hospital": "Urgent Care Aruba ","phonenumber": "5860512" }]},{"id": 1,"typedoctor": 1,"name": "Jillian Jones","type": "Doctor di Cas","location": [{"city": "De La Sallestraat 71 A","hospital": "Hospital Name","phonenumber": "5839919"}]}]';
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/azv.js"></script>
 
 
-      azv_salud_doctor_list_ok(test_data);
-      // azv_salud_doctor_list();
+<script>
 
-      function azv_salud_doctor_list() {
+$(function () {
 
-        // loader();
+  //azv_salud_doctor_list();
 
-        $method = 'GET';
-        $url = server + 'medicalsp';
-        $.ajax({
+  // test_data = '{"data":[{"id": "1","typeDoctor": "1","name": "Jose Gregorio Ortiz Tovar","type": "Ginecologo","location": [{"city": "puerto ayacucho estado amazonas","hospital": "doctor jose gregorio hernandez","phoneNumber": "0414-1516235"},{"city": "san fernando de apure estado apure","hospital": "doctor fernando giron gomez","phoneNumber": "0414-1516235"},{"city": "altagracia de orituco estado guarico","hospital": "doctor fermin marmol leon garcia","phoneNumber": "0414-1516235"}]},{"id": "2","typeDoctor": "2","name": "Jose Tovar","type": "Dermatologo","location": [{"city": "puerto ayacucho ","hospital": "doctor hernandez","phoneNumber": "0414-1516235"},{"city": "san fernando de apure estado apure","hospital": "doctor fernando giron gomez","phoneNumber": "0414-1516235"},{"city": "altagracia de orituco estado guarico","hospital": "doctor fermin marmol leon garcia","phoneNumber": "0414-1516235"}]}]}';
 
-          type: $method,
-          url: $url,
-          ContentType: "application/json",
-          //data: 'user_default_product_detail="user_company":"'+$('#user_company').val()+'"',
-          headers: {
-            //'token':$.cookie('token')
-          },
-          success: function (data) {
+  test_data = '[{"id": 1,"typedoctor": 1,"name": "Noris Yagua-Velasquez","type": "Doctor di Cas","location": [{"city": "Noord 63","hospital": "Urgent Care Aruba ","phonenumber": "5860512" }]},{"id": 1,"typedoctor": 1,"name": "Jillian Jones","type": "Doctor di Cas","location": [{"city": "De La Sallestraat 71 A","hospital": "Hospital Name","phonenumber": "5839919"}]}]';
 
-            azv_salud_doctor_list_ok(data);
 
-          },
-          error: function (data) {
+  azv_salud_doctor_list_ok(test_data);
+  // azv_salud_doctor_list();
 
-            azv_salud_doctor_list_error(data);
+  function azv_salud_doctor_list() {
 
-          }
-        });
+    // loader();
+
+    $method = 'GET';
+    $url = server + 'medicalsp';
+    $.ajax({
+
+      type: $method,
+      url: $url,
+      ContentType: "application/json",
+      //data: 'user_default_product_detail="user_company":"'+$('#user_company').val()+'"',
+      headers: {
+        //'token':$.cookie('token')
+      },
+      success: function (data) {
+
+        azv_salud_doctor_list_ok(data);
+
+      },
+      error: function (data) {
+
+        azv_salud_doctor_list_error(data);
 
       }
-
-      function azv_salud_doctor_list_ok(data) {
-
-        //TODO: Pintar los centros dinamicamente
-
-        data = jQuery.parseJSON(data);
-
-        flag = true;
-        var k = 0;
-        var append = '';
-
-        var data_length = data.length;
-        if (data_length > 0) {         
-
-          $.each(data, function (i, item) {
-            append += '<div class="row">';
-            append += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-left">';
-            append += '<b>' + item.location[0].city + '</b>';
-            append += '</div>';
-            append += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.location[0].city + '</p></div>';
-            append += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
-            append += '<b><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.location[0].phonenumber + '</b>';
-            append += '</div>';
-            append += '</div>';
-
-            if (i != (data_length-1)){
-              append += '<hr>';
-            }
-          });
-
-          $('#doctor_content').append(append);
-
-        }
-
-      }
-
-      function azv_salud_doctor_list_error(data) {
-        console.log(data);
-      }
-
     });
-  </script>
+
+  }
+
+  function azv_salud_doctor_list_ok(data) {
+
+    //TODO: Pintar los centros dinamicamente
+
+    data = jQuery.parseJSON(data);
+
+    flag = true;
+    var k = 0;
+    var append = '';
+
+    var data_length = data.length;
+    if (data_length > 0) {
+
+      $.each(data, function (i, item) {
+        append += '<div class="row">';
+        append += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-left">';
+        append += '<b>' + item.location[0].city + '</b>';
+        append += '</div>';
+        append += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.location[0].city + '</p></div>';
+        append += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
+        append += '<b><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.location[0].phonenumber + '</b>';
+        append += '</div>';
+        append += '</div>';
+
+        if (i != (data_length-1)){
+          append += '<hr>';
+        }
+      });
+
+      $('#doctor_content').append(append);
+
+    }
+
+  }
+
+  function azv_salud_doctor_list_error(data) {
+    console.log(data);
+  }
+
+});
+</script>
 
 </body>
 
