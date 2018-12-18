@@ -257,6 +257,7 @@ pre {
 .location-name{
   margin: 0 0 1px;
 }
+
 .navbar-page{
   font-size: 12px;
   webkit-font-smoothing: antialiased;
@@ -280,3 +281,8 @@ pre {
   margin-top: 8px;
 
 }
+
+.datepicker {
+  padding: 0px !important;
+}
+
