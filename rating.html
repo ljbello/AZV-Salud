@@ -573,10 +573,13 @@
 			
 			});
 			
-			
 			json_general_value += json_questions_value + '] } } ';
 		  
-			rating_create(json_general_value);
+		  
+			if ($('#azvNr').val() != '' && $('#birthDatedate').val() != '' && $('#date').val() != '')
+				rating_create(json_general_value);
+			else
+				alert('Please complete the fields');
 			
 		  });
 
