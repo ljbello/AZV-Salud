@@ -146,8 +146,8 @@
               <div class="form-group">
                 <div class="text-center rating-radio">
                   <h5><b>3. Bo ta conoci cu e orario di e practica di bodokter di cas dentro di bo promer intento?<b></h5>
-                  <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3">Yes</label>
-                  <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3">No</label>
+                  <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3" value="yes">Yes</label>
+                  <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3" value="no">No</label>
                 </div>
               </div>
               <hr>
@@ -536,27 +536,47 @@
 			
 			var json_general_value = '';
 			var json_questions_value = '';
+			var general_index = 0;
+			var total_controls = $('.rating-stars').length + $(':radio[name="opt_radio"]:checked').length;
 			
-			json_general_value = '{ questionSend = { "azvNr": "' + $('#azvNr').val() + '", "birthDate": "' + $('#birthDatedate').val() + '",';
+			json_general_value = '{ "questionSend" : { "azvNr": "' + $('#azvNr').val() + '", "birthDate": "' + $('#birthDatedate').val() + '",';
 			
 			json_questions_value = ' "question": ['
 
 			// rating secction
 			$('.rating-stars').each(function (index, value){
 			
+				general_index++;
 				json_questions_value += '{ ';
 				json_questions_value += '"name": "' + $(this).children().attr('question') + '",';
 				json_questions_value += '"value": "' + $(this).children().attr('data_value') + '",';
 				json_questions_value += '"type": "rating"';
-				json_questions_value += '}, ';
+				if (general_index != total_controls)
+					json_questions_value += '}, ';
+				else
+					json_questions_value += '} ';
+			
+			});
+			
+			// ratio secction
+			$('input:radio:checked').each(function() { // Iterate through all checked radio buttons }); 
+			
+				general_index++;
+				json_questions_value += '{ ';
+				json_questions_value += '"name": "' + $(this).attr('question') + '",';
+				json_questions_value += '"value": "' + $(this).val()+ '",';
+				json_questions_value += '"type": "radio"';
+				if (general_index != total_controls)
+					json_questions_value += '}, ';
+				else
+					json_questions_value += '} ';
 			
 			});
 			
 			
 			json_general_value += json_questions_value + '] } } ';
-			
-			alert(json_value);
 		  
+			rating_create(json_general_value);
 			
 		  });
 
@@ -576,9 +596,11 @@
 	
 			type: $method,
 			url: $url,
+			ContentType: "application/json",
 			headers: {
 				//'token': '',
 			},
+			data:  json_value,
 			success: function(data) {
 				
 				rating_create_ok(data);
