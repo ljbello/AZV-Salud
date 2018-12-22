@@ -50,12 +50,12 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="card azv-card">
           <div class="card-body">
-            <!-- <form id="frm_rating" class="form-horizontal"> -->
 
             <h5><b>Informacion di usuario<b></h5>
             <hr>
             <div class="form-group">
               <label for="inputEmail3" class="col-xs-6 control-label">AZV Nr.</label>
+
               <div class="col-xs-6">
                 <input type="text" class="form-control" id="azvNr" name="azvNr" placeholder="1-090002">
               </div>
@@ -149,6 +149,7 @@
                 <h5><b>3. Bo ta conoci cu e orario di e practica di bodokter di cas dentro di bo promer intento?<b></h5>
                 <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3" value="yes">Yes</label>
                 <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3" value="no">No</label>
+
               </div>
             </div>
             <hr>
@@ -541,13 +542,12 @@
           var total_controls = $('.rating-stars').length + $(':radio[name="opt_radio"]:checked').length;
 
           json_general_value = '{ "questionSend" : { "azvNr": "' + $('#azvNr').val() + '", "birthDate": "' + $('#birthDatedate').val() + '",';
-
           json_questions_value = ' "question": ['
 
           // rating secction
           $('.rating-stars').each(function (index, value) {
-
             general_index++;
+
             json_questions_value += '{ ';
             json_questions_value += '"name": "' + $(this).children().attr('question') + '",';
             json_questions_value += '"value": "' + $(this).children().attr('data_value') + '",';

@@ -16,6 +16,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/caribedev.css" rel="stylesheet">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.css" rel="stylesheet" />
+
   <link href="css/azv.css" rel="stylesheet">
   <link href="css/font-awesome.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -58,8 +60,6 @@
         </section>
       </div>
     </div>
-
-
     <nav class="navbar navbar-fixed-bottom navbar-bottom">
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
         <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
@@ -79,97 +79,105 @@
 </div> -->
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/azv.js"></script>
-
-
-<script>
-
-$(function () {
-
-  //azv_salud_doctor_list();
-
-  // test_data = '{"data":[{"id": "1","typeDoctor": "1","name": "Jose Gregorio Ortiz Tovar","type": "Ginecologo","location": [{"city": "puerto ayacucho estado amazonas","hospital": "doctor jose gregorio hernandez","phoneNumber": "0414-1516235"},{"city": "san fernando de apure estado apure","hospital": "doctor fernando giron gomez","phoneNumber": "0414-1516235"},{"city": "altagracia de orituco estado guarico","hospital": "doctor fermin marmol leon garcia","phoneNumber": "0414-1516235"}]},{"id": "2","typeDoctor": "2","name": "Jose Tovar","type": "Dermatologo","location": [{"city": "puerto ayacucho ","hospital": "doctor hernandez","phoneNumber": "0414-1516235"},{"city": "san fernando de apure estado apure","hospital": "doctor fernando giron gomez","phoneNumber": "0414-1516235"},{"city": "altagracia de orituco estado guarico","hospital": "doctor fermin marmol leon garcia","phoneNumber": "0414-1516235"}]}]}';
-
-  test_data = '[{"id": 1,"typedoctor": 1,"name": "Noris Yagua-Velasquez","type": "Doctor di Cas","location": [{"city": "Noord 63","hospital": "Urgent Care Aruba ","phonenumber": "5860512" }]},{"id": 1,"typedoctor": 1,"name": "Jillian Jones","type": "Doctor di Cas","location": [{"city": "De La Sallestraat 71 A","hospital": "Hospital Name","phonenumber": "5839919"}]}]';
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="js/azv.js"></script>
 
 
-  azv_salud_doctor_list_ok(test_data);
-  // azv_salud_doctor_list();
+  <script>
 
-  function azv_salud_doctor_list() {
+    $(function () {
 
-    // loader();
+      //azv_salud_doctor_list();
 
-    $method = 'GET';
-    $url = server + 'medicalsp';
-    $.ajax({
+      // test_data = '{"data":[{"id": "1","typeDoctor": "1","name": "Jose Gregorio Ortiz Tovar","type": "Ginecologo","location": [{"city": "puerto ayacucho estado amazonas","hospital": "doctor jose gregorio hernandez","phoneNumber": "0414-1516235"},{"city": "san fernando de apure estado apure","hospital": "doctor fernando giron gomez","phoneNumber": "0414-1516235"},{"city": "altagracia de orituco estado guarico","hospital": "doctor fermin marmol leon garcia","phoneNumber": "0414-1516235"}]},{"id": "2","typeDoctor": "2","name": "Jose Tovar","type": "Dermatologo","location": [{"city": "puerto ayacucho ","hospital": "doctor hernandez","phoneNumber": "0414-1516235"},{"city": "san fernando de apure estado apure","hospital": "doctor fernando giron gomez","phoneNumber": "0414-1516235"},{"city": "altagracia de orituco estado guarico","hospital": "doctor fermin marmol leon garcia","phoneNumber": "0414-1516235"}]}]}';
 
-      type: $method,
-      url: $url,
-      ContentType: "application/json",
-      //data: 'user_default_product_detail="user_company":"'+$('#user_company').val()+'"',
-      headers: {
-        //'token':$.cookie('token')
-      },
-      success: function (data) {
+      test_data = '[{"id": 1,"typedoctor": 1,"name": "Noris Yagua-Velasquez","type": "Doctor di Cas","location": [{"city": "Noord 63","hospital": "Urgent Care Aruba ","phonenumber": "5860512" }]},{"id": 1,"typedoctor": 1,"name": "Jillian Jones","type": "Doctor di Cas","location": [{"city": "De La Sallestraat 71 A","hospital": "Hospital Name","phonenumber": "5839919"}]}]';
 
-        azv_salud_doctor_list_ok(data);
 
-      },
-      error: function (data) {
+      azv_salud_doctor_list_ok(test_data);
+      // azv_salud_doctor_list();
 
-        azv_salud_doctor_list_error(data);
+      function azv_salud_doctor_list() {
+
+        // loader();
+
+        $method = 'GET';
+        $url = server + 'medicalsp';
+        $.ajax({
+
+          type: $method,
+          url: $url,
+          ContentType: "application/json",
+          //data: 'user_default_product_detail="user_company":"'+$('#user_company').val()+'"',
+          headers: {
+            //'token':$.cookie('token')
+          },
+          success: function (data) {
+
+            azv_salud_doctor_list_ok(data);
+
+          },
+          error: function (data) {
+
+            azv_salud_doctor_list_error(data);
+
+          }
+        });
 
       }
-    });
 
-  }
+      function azv_salud_doctor_list_ok(data) {
 
-  function azv_salud_doctor_list_ok(data) {
+        //TODO: Pintar los centros dinamicamente
+        data = jQuery.parseJSON(data);
 
-    //TODO: Pintar los centros dinamicamente
+        flag = true;
+        var k = 0;
+        var append = '';
 
-    data = jQuery.parseJSON(data);
+        var data_length = data.length;
+        if (data_length > 0) {
 
-    flag = true;
-    var k = 0;
-    var append = '';
+          $.each(data, function (i, item) {
+            append += '<div class="row">';
+            append += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-left">';
 
-    var data_length = data.length;
-    if (data_length > 0) {
+            if (i == 0) {
+              append += '<b>Pabow di brug</b>';
+              // append += '<b>' + item.location[0].city + '</b>'
+            }
+            else {
+              append += '<b>Pariba di brug</b>';
+            }
+            append += '</div>';
 
-      $.each(data, function (i, item) {
-        append += '<div class="row">';
-        append += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-left">';
-        append += '<b>' + item.location[0].city + '</b>';
-        append += '</div>';
-        append += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.location[0].city + '</p></div>';
-        append += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
-        append += '<b><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.location[0].phonenumber + '</b>';
-        append += '</div>';
-        append += '</div>';
+            append += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.location[0].city + '</p></div>';
+            append += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
+            append += '<b><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.location[0].phonenumber + '</b>';
+            append += '</div>';
+            append += '</div>';
 
-        if (i != (data_length-1)){
-          append += '<hr>';
+            if (i != (data_length - 1)) {
+              append += '<hr>';
+            }
+          });
+
+          $('#doctor_content').append(append);
+
         }
-      });
 
-      $('#doctor_content').append(append);
+      }
 
-    }
+      function azv_salud_doctor_list_error(data) {
+        console.log(data);
+      }
 
-  }
-
-  function azv_salud_doctor_list_error(data) {
-    console.log(data);
-  }
-
-});
-</script>
+    });
+  </script>
 
 </body>
 
