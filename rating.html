@@ -53,14 +53,19 @@
 
             <h5 class='azv-blue'><b>Informacion di usuario</b></h5>
             <hr class='azv-hr'>
+
             <div class="form-group">
               <label class="control-label col-xs-6 align-left">AZV Nr.</label>
               <div class="col-xs-6">
                 <input type="text" class="form-control" id="azvNr" name="azvNr" placeholder="1000002">
               </div>
             </div>
+
             <br>
             <br>
+            <br>
+
+
             <div class="form-group">
               <label class="control-label col-xs-6 align-left">Fecha di naciemento</label>
               <div class="col-xs-6 date">
@@ -71,331 +76,338 @@
                 </div>
               </div>
             </div>
-            <br>
-            <br>
-            <br>
-
-            <h5 class='azv-blue'><b>Preguntanan general</b></h5>
-            <hr class='azv-hr'>
-            <div class="form-group">
-              <label class="control-label col-xs-6 align-left">Fecha ultimo Bishita na dokter di cas:</label>
-              <div class="col-xs-6 date">
-                <div class="input-group input-append date datepicker">
-                  <input type="text" class="form-control" name="date" placeholder="12/29/2018" value="" />
-                  <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
+          </div>
+          <br>
+          <br>
+          <h5 class='azv-blue'><b>Preguntanan general</b></h5>
+          <hr class='azv-hr'>
+          <div class="form-group">
+            <label class="control-label col-xs-6 align-left">Fecha ultimo Bishita na dokter di cas:</label>
+            <div class="col-xs-6 date">
+              <div class="input-group input-append date datepicker">
+                <input type="text" class="form-control" name="date" placeholder="12/29/2018" value="" />
+                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
               </div>
             </div>
-            </br>
-            </br>
-            </br>
-            <div id="questions"></div>
-            <button id="btn_rating" type="button" class="btn btn-lg btn-info btn-block" disabled>
-              <span>Rating Done</span>
-            </button>
-            <hr>
-            <br>
-            <br>
-            <!-- </form> -->
           </div>
+          </br>
+          </br>
+          </br>
+          <div id="questions"></div>
+          <button id="btn_rating" type="button" class="btn btn-lg btn-info btn-block" disabled>
+            <span>Rating Done</span>
+          </button>
+          <hr>
+          <br>
+          <br>
+          <!-- </form> -->
         </div>
       </div>
-      <nav class="navbar navbar-fixed-bottom navbar-bottom">
-        <div class="col-xs-4 col-md-4 text-center footer-margin-top">
-          <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
-        </div>
-        <div class="col-xs-4 col-md-4 text-center footer-margin-top">
-          <a href="rating.html"><i class="fa bottom-fa-star-half-o"></i></a>
-        </div>
-        <div class="col-xs-4 col-md-4 text-center footer-margin-top">
-          <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
-        </div>
-      </nav>
-    </div> <!-- /container -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery.cookie.min.js"></script>
+    </div>
+    <nav class="navbar navbar-fixed-bottom navbar-bottom">
+      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
+        <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
+      </div>
+      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
+        <a href="rating.html"><i class="fa bottom-fa-star-half-o"></i></a>
+      </div>
+      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
+        <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
+      </div>
+    </nav>
+  </div> <!-- /container -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.cookie.min.js"></script>
 
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
-    <script src="js/azv.js"></script>
-    <script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+  <script>
 
-      test_data = '[{	"name": "Question 1",	"type": "radio",	"extras": {		"options": ["yes", "no"]	},	"icon": ""}, {	"name": "Question 2",	"type": "date",	"extras": {},	"icon": ""}, {	"name": "Question 3",	"type": "text",	"extras": {},	"icon": ""}, {	"name": "Question 4",	"type": "text",	"extras": {},	"icon": ""}, {	"name": "Question 5",	"type": "rating",	"extras": {		"options": ["1", "2", "3", "4", "5", "6", "7"]	},	"icon": "star"}, {	"name": "Question 6",	"type": "rating",	"extras": {		"options": ["Very Bad", "Bad", "neutral", "Good", "Very Good"]	},	"icon": "star"}]';
+    var test_data = "" ;
+
+    $.ajax({
+      type: 'GET',
+      url: 'js/DefQuestionAZV.json',
+      ContentType: "application/json",
+      async : false,
+      success: function (response) {
+        test_data = response;
+      }
+    });
+
+    $(document).ready(function () {
       azv_rating_list_ok(test_data);
 
 
-      $(document).ready(function () {
-
-
-        // azv_rating_list();
+      // azv_rating_list();
 
 
 
-        var answer_selected = 0;
+      var answer_selected = 0;
 
 
-        /* 1. Visualizing things on Hover - See next part for action on click */
-        $('#stars li').on('mouseover', function () {
-          var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+      /* 1. Visualizing things on Hover - See next part for action on click */
+      $('#stars li').on('mouseover', function () {
+        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
 
-          // Now highlight all the stars that's not after the current hovered star
-          $(this).parent().children('li.star').each(function (e) {
-            if (e < onStar) {
-              $(this).addClass('hover');
-            }
-            else {
-              $(this).removeClass('hover');
-            }
-          });
-
-        }).on('mouseout', function () {
-          $(this).parent().children('li.star').each(function (e) {
-            $(this).removeClass('hover');
-          });
-        });
-
-
-        /* 2. Action to perform on click */
-        $('#stars li').on('click', function () {
-
-          answer_selected = 0;
-
-          var onStar = parseInt($(this).data('value'), 10); // The star currently selected
-          var stars = $(this).parent().children('li.star');
-
-          for (i = 0; i < stars.length; i++) {
-            $(stars[i]).removeClass('selected');
-          }
-
-          for (i = 0; i < onStar; i++) {
-            $(stars[i]).addClass('selected');
-          }
-
-          // JUST RESPONSE (Not needed)
-          var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-          var msg = "";
-          if (ratingValue > 1) {
-            msg = "Thanks! You rated this " + ratingValue + " stars.";
+        // Now highlight all the stars that's not after the current hovered star
+        $(this).parent().children('li.star').each(function (e) {
+          if (e < onStar) {
+            $(this).addClass('hover');
           }
           else {
-            msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+            $(this).removeClass('hover');
           }
-          responseMessage(msg);
-
-          $('#' + $(this).attr('lnk') + '').text($(this).attr('Title'));
-
-          $(this).parent().attr('data_value', onStar);
-
-          $('.rating-stars').each(function (index, value) {
-            if ($(this).children().attr('data_value') != '')
-              answer_selected++;
-          });
-
-          if (answer_selected >= 12 && $('input[name="opt_radio"]').is(':checked')) {
-            $("#btn_rating").prop("disabled", false);
-          }
-
         });
 
-        $('input[name="opt_radio"]').change(function () {
+      }).on('mouseout', function () {
+        $(this).parent().children('li.star').each(function (e) {
+          $(this).removeClass('hover');
+        });
+      });
 
-          answer_selected = 0;
 
-          $('.rating-stars').each(function (index, value) {
-            if ($(this).children().attr('data_value') != '')
-              answer_selected++;
-          });
+      /* 2. Action to perform on click */
+      $('#stars li').on('click', function () {
 
-          if (answer_selected >= 12 && $('input[name="opt_radio"]').is(':checked')) {
-            $("#btn_rating").prop("disabled", false);
-          }
+        answer_selected = 0;
 
+        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+        var stars = $(this).parent().children('li.star');
+
+        for (i = 0; i < stars.length; i++) {
+          $(stars[i]).removeClass('selected');
+        }
+
+        for (i = 0; i < onStar; i++) {
+          $(stars[i]).addClass('selected');
+        }
+
+        // JUST RESPONSE (Not needed)
+        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+        var msg = "";
+        if (ratingValue > 1) {
+          msg = "Thanks! You rated this " + ratingValue + " stars.";
+        }
+        else {
+          msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+        }
+        responseMessage(msg);
+
+        $('#' + $(this).attr('lnk') + '').text($(this).attr('Title'));
+
+        $(this).parent().attr('data_value', onStar);
+
+        $('.rating-stars').each(function (index, value) {
+          if ($(this).children().attr('data_value') != '')
+            answer_selected++;
         });
 
+        if (answer_selected >= 12 && $('input[name="opt_radio"]').is(':checked')) {
+          $("#btn_rating").prop("disabled", false);
+        }
 
-        $('#btn_rating').click(function (e) {
+      });
 
-          // Get all values from controls
+      $('input[name="opt_radio"]').change(function () {
 
-          var json_general_value = '';
-          var json_questions_value = '';
+        answer_selected = 0;
 
-          json_general_value = '{ questionSend = { "azvNr": "' + $('#azvNr').val() + '", "birthDate": "' + $('#birthDatedate').val() + '",';
-
-          json_questions_value = ' "question": ['
-
-          // rating secction
-          $('.rating-stars').each(function (index, value) {
-
-            json_questions_value += '{ ';
-            json_questions_value += '"name": "' + $(this).children().attr('question') + '",';
-            json_questions_value += '"value": "' + $(this).children().attr('data_value') + '",';
-            json_questions_value += '"type": "rating"';
-            json_questions_value += '}, ';
-
-          });
-
-
-          json_general_value += json_questions_value + '] } } ';
-
-          alert(json_value);
-
-
+        $('.rating-stars').each(function (index, value) {
+          if ($(this).children().attr('data_value') != '')
+            answer_selected++;
         });
+
+        if (answer_selected >= 12 && $('input[name="opt_radio"]').is(':checked')) {
+          $("#btn_rating").prop("disabled", false);
+        }
 
       });
 
 
+      $('#btn_rating').click(function (e) {
 
+        // Get all values from controls
 
-      function azv_rating_list() {
-        // loader();
-        $method = 'GET';
-        $url = server + 'rating';
-        $.ajax({
-          type: $method,
-          url: $url,
-          ContentType: "application/json",
-          //data: 'user_default_product_detail="user_company":"'+$('#user_company').val()+'"',
-          headers: {
-            //'token':$.cookie('token')
-          },
-          success: function (data) {
-            azv_rating_list_ok(data);
-          },
-          error: function (data) {
-            azv_rating_list_error(data);
-          }
+        var json_general_value = '';
+        var json_questions_value = '';
+
+        json_general_value = '{ questionSend = { "azvNr": "' + $('#azvNr').val() + '", "birthDate": "' + $('#birthDatedate').val() + '",';
+
+        json_questions_value = ' "question": ['
+
+        // rating secction
+        $('.rating-stars').each(function (index, value) {
+
+          json_questions_value += '{ ';
+          json_questions_value += '"name": "' + $(this).children().attr('question') + '",';
+          json_questions_value += '"value": "' + $(this).children().attr('data_value') + '",';
+          json_questions_value += '"type": "rating"';
+          json_questions_value += '}, ';
+
         });
 
-      }
+
+        json_general_value += json_questions_value + '] } } ';
+
+        alert(json_value);
 
 
-      function azv_rating_list_ok(data) {
+      });
 
-        data = jQuery.parseJSON(data);
+    });
 
-        flag = true;
-        var k = 0;
-        var dr = '';
-        var botica = '';
-        var html_questions = '';
 
-        var data_length = data.length;
-        if (data_length > 0) {
 
-          $.each(data, function (i, item) {
 
-            html_questions = '<div class=row>';
-
-            switch (item.type) {
-              case "radio":
-
-                html_questions += '<div class="form-group">';
-                html_questions += '<div class="text-center rating-radio">';
-                html_questions += '<h5><b>' + (i + 1) + '. ' + item.name + '?</b></h5>';
-
-                $.each(item.extras.options, function (x, option) {
-                  html_questions += '<label class="radio-inline"><input type="radio" name="question_' + (i + 1) + '"  question="question_' + (i + 1) + '">' + option + '</label>';
-                });
-                html_questions += '</div>';
-                html_questions += '</div>';
-
-                break;
-              case 'date':
-                html_questions += '<div class="form-group">';
-                html_questions += '<label class="control-label col-xs-12 text-center">' + (i + 1) + '. ' + item.name + '?</label>';
-                html_questions += '<div class="col-xs-2"></div>';
-                html_questions += '<div class="col-xs-8 date">';
-                html_questions += '<div class="input-group input-append date datepicker">';
-                html_questions += '<input type="text" class="form-control" name="question_' + (i + 1) + '" placeholder="12/29/2018" value="" />';
-                html_questions += '<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>';
-                html_questions += '</div>';
-                html_questions += '</div>';
-                html_questions += '</div>';
-                break;
-              case 'text':
-                html_questions += '<div class="form-group">';
-                html_questions += '<label class="control-label col-xs-12 text-center">' + (i + 1) + '. ' + item.name + '?</label>';
-                html_questions += '<div class="col-xs-2"></div>';
-                html_questions += '<div class="col-xs-12 date">';
-                html_questions += '<div class="input-group input-append">';
-                html_questions += '<textarea type="text" class="form-control" name="question_' + (i + 1) + '" placeholder="" value=""></textarea>';
-                html_questions += '</div>';
-                html_questions += '</div>';
-                html_questions += '</div>';
-
-                break;
-              case 'rating':
-
-                html_questions += '<div class="form-group">';
-                html_questions += '<div class="text-center">';
-                html_questions += '<h5><b>' + (i + 1) + '. ' + item.name + '</b></h5>';
-                html_questions += '<div class="rating-stars text-center">';
-                html_questions += '<ul id="stars" question="Question ' + (i + 1) + '" data_value="' + (i + 1) + '">';
-                $.each(item.extras.options, function (x, option) {
-                  html_questions += '<li class="star" title="' + option + '" lnk="rating_' + (i + 1) + '" data-value="' + (x + 1) + '">';
-                  html_questions += '<i class="fa fa-star fa-fw"></i>';
-                  html_questions += '</li>';
-                });
-                html_questions += '</ul>';
-                html_questions += '</div>';
-                html_questions += '<span id="rating_' + (i + 1) + '"></span>';
-                html_questions += '</div>';
-                html_questions += '</div>';                
-
-                break;
-
-            }
-            
-            html_questions += '</div>';
-            html_questions += '<hr class="azv-hr">';
- 
-
-            $('#questions').append(html_questions);
-            html_questions = '';          
-
-          });
-
+    function azv_rating_list() {
+      // loader();
+      $method = 'GET';
+      $url = server + 'rating';
+      $.ajax({
+        type: $method,
+        url: $url,
+        ContentType: "application/json",
+        //data: 'user_default_product_detail="user_company":"'+$('#user_company').val()+'"',
+        headers: {
+          //'token':$.cookie('token')
+        },
+        success: function (data) {
+          azv_rating_list_ok(data);
+        },
+        error: function (data) {
+          azv_rating_list_error(data);
         }
-      }
+      });
 
-      function responseMessage(msg) {
-        $('.success-box').fadeIn(200);
-        $('.success-box div.text-message').html("<span>" + msg + "</span>");
-      }
+    }
 
-      function rating_create(json_value) {
 
-        $method = 'POST';
-        $url = server + 'rating'
-        $.ajax({
+    function azv_rating_list_ok(data) {
 
-          type: $method,
-          url: $url,
-          headers: {
-            //'token': '',
-          },
-          success: function (data) {
+      // data = jQuery.parseJSON(data);
 
-            rating_create_ok(data);
-          },
-          error: function (data) {
-            rating_create_error(data);
+      flag = true;
+      var k = 0;
+      var dr = '';
+      var botica = '';
+      var html_questions = '';
+
+      var data_length = data.length;
+      if (data_length > 0) {
+
+        $.each(data, function (i, item) {
+
+          html_questions = '<div class=row>';
+
+          switch (item.type) {
+            case "radio":
+
+              html_questions += '<div class="form-group">';
+              html_questions += '<div class="text-center rating-radio">';
+              html_questions += '<h5><b>' + (i + 1) + '. ' + item.questions + '?</b></h5>';
+
+              $.each(item.extras.options, function (x, option) {
+                html_questions += '<label class="radio-inline container">&nbsp&nbsp' + option + '<input type="radio" name="question_' + (i + 1) + '"  question="question_' + (i + 1) + '"><span class="checkmark"></span></label>';
+              });
+              html_questions += '</div>';
+              html_questions += '</div>';
+
+              break;
+            case 'date':
+              html_questions += '<div class="form-group">';
+              html_questions += '<label class="control-label col-xs-12 text-center">' + (i + 1) + '. ' + item.questions + '?</label>';
+              html_questions += '<div class="col-xs-8 col-xs-offset-2 date">';
+              html_questions += '<div class="input-group input-append date datepicker">';
+              html_questions += '<input type="text" class="form-control" name="question_' + (i + 1) + '" placeholder="12/29/2018" value="" />';
+              html_questions += '<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>';
+              html_questions += '</div>';
+              html_questions += '</div>';
+              html_questions += '</div>';
+              break;
+            case 'text':
+              html_questions += '<div class="form-group">';
+              html_questions += '<label class="control-label col-xs-12 text-center">' + (i + 1) + '. ' + item.questions + '?</label>';
+
+              html_questions += '<div class=" col-xs-offset-1 col-xs-10">';
+              html_questions += '<div class="input-group input-append">';
+              html_questions += '<textarea type="text" class="form-control" rows="3" cols="50" name="question_' + (i + 1) + '" placeholder="" value=""></textarea>';
+              html_questions += '</div>';
+              html_questions += '</div>';
+              html_questions += '</div>';
+
+              break;
+            case 'rating':
+
+              html_questions += '<div class="form-group">';
+              html_questions += '<div class="text-center">';
+              html_questions += '<h5><b>' + (i + 1) + '. ' + item.questions + '</b></h5>';
+              html_questions += '<div class="rating-stars text-center">';
+              html_questions += '<ul id="stars" question="Question ' + (i + 1) + '" data_value="' + (i + 1) + '">';
+              $.each(item.extras.options, function (x, option) {
+                html_questions += '<li class="star" title="' + option + '" lnk="rating_' + (i + 1) + '" data-value="' + (x + 1) + '">';
+                html_questions += '<i class="fa fa-star fa-fw"></i>';
+                html_questions += '</li>';
+              });
+              html_questions += '</ul>';
+              html_questions += '</div>';
+              html_questions += '<span id="rating_' + (i + 1) + '"></span>';
+              html_questions += '</div>';
+              html_questions += '</div>';
+
+              break;
+
           }
+
+          html_questions += '</div>';
+          html_questions += '<hr>';
+
+
+          $('#questions').append(html_questions);
+          html_questions = '';
 
         });
 
       }
+    }
 
-      function rating_create_ok(data) {
-        window.location.href = 'home.html';
-      }
+    function responseMessage(msg) {
+      $('.success-box').fadeIn(200);
+      $('.success-box div.text-message').html("<span>" + msg + "</span>");
+    }
 
-      function rating_create_error(data) {
-        console.log(data);
-      }
+    function rating_create(json_value) {
 
-    </script>
+      $method = 'POST';
+      $url = server + 'rating'
+      $.ajax({
+
+        type: $method,
+        url: $url,
+        headers: {
+          //'token': '',
+        },
+        success: function (data) {
+
+          rating_create_ok(data);
+        },
+        error: function (data) {
+          rating_create_error(data);
+        }
+
+      });
+
+    }
+
+    function rating_create_ok(data) {
+      window.location.href = 'home.html';
+    }
+
+    function rating_create_error(data) {
+      console.log(data);
+    }
+
+  </script>
+  <script src="js/azv.js"></script>
