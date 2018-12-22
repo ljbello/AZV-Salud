@@ -52,375 +52,376 @@
           <div class="card-body">
             <!-- <form id="frm_rating" class="form-horizontal"> -->
 
-              <h5><b>Informacion di usuario<b></h5>
-              <hr>
-              <div class="form-group">
-                <label for="inputEmail3" class="col-xs-6 control-label">AZV Nr.</label>
-                <div class="col-xs-6">
-                  <input type="text" class="form-control" id="azvNr" name="azvNr" placeholder="1-090002">
+            <h5><b>Informacion di usuario<b></h5>
+            <hr>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-xs-6 control-label">AZV Nr.</label>
+              <div class="col-xs-6">
+                <input type="text" class="form-control" id="azvNr" name="azvNr" placeholder="1-090002">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-6 align-left">Gebor Datum:</label>
+              <div class="col-xs-6 date">
+                <div class="input-group input-append date datepicker">
+                  <input type="text" class="form-control" id="birthDatedate" name="birthDatedate" placeholder="12/29/2018"
+                    value="" />
+                  <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="control-label col-xs-6 align-left">Gebor Datum:</label>
-                <div class="col-xs-6 date">
-                  <div class="input-group input-append date datepicker">
-                    <input type="text" class="form-control" id="birthDatedate" name="birthDatedate" placeholder="12/29/2018" value="" />
-                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                  </div>
-                </div>
-              </div>
-              <br>
+            </div>
+            <br>
 
-              <h5><b>Preguntanan general<b></h5>
-              <hr>
+            <h5><b>Preguntanan general<b></h5>
+            <hr>
 
-              <div class="form-group">
-                <label class="control-label col-xs-6 align-left">Fecha ultimo Bishita na dokter di cas:</label>
-                <div class="col-xs-6 date">
-                  <div class="input-group input-append date datepicker">
-                    <input type="text" class="form-control" name="date" placeholder="12/29/2018" value="" />
-                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                  </div>
+            <div class="form-group">
+              <label class="control-label col-xs-6 align-left">Fecha ultimo Bishita na dokter di cas:</label>
+              <div class="col-xs-6 date">
+                <div class="input-group input-append date datepicker">
+                  <input type="text" class="form-control" name="date" placeholder="12/29/2018" value="" />
+                  <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
               </div>
-              <!-- <label class="control-label col-xs-6 align-right" for="text">Fecha ultimo Bishita na dokter di cas:</label>
+            </div>
+            <!-- <label class="control-label col-xs-6 align-right" for="text">Fecha ultimo Bishita na dokter di cas:</label>
                 <div class="col-xs-6">
                   <input type="text" class="form-control" id="text" placeholder="08/10/2018">
                 </div> -->
-              <br><br>
+            <br><br>
 
-              <h5><b>Rating<b></h5>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>1. E telefon na e practica di bo dokter di cas a ser contesta dentro un tempo rasonabel?<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 1" data_value="">
-                      <li class='star' title='Poor' lnk="rating_1" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_1" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_1" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_1" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_1" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-                  <span id="rating_1"></span>
+            <h5><b>Rating<b></h5>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>1. E telefon na e practica di bo dokter di cas a ser contesta dentro un tempo rasonabel?<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 1" data_value="">
+                    <li class='star' title='Poor' lnk="rating_1" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_1" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_1" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_1" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_1" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_1"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>2. Con fácil tawata pa haya un cita cu bo dokter di cas dentro di bo prometer intento?<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 2" data_value="">
-                      <li class='star' title='Poor' lnk="rating_2" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_2" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_2" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_2" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_2" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_2"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>2. Con fácil tawata pa haya un cita cu bo dokter di cas dentro di bo prometer intento?<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 2" data_value="">
+                    <li class='star' title='Poor' lnk="rating_2" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_2" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_2" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_2" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_2" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_2"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center rating-radio">
-                  <h5><b>3. Bo ta conoci cu e orario di e practica di bodokter di cas dentro di bo promer intento?<b></h5>
-                  <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3" value="yes">Yes</label>
-                  <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3" value="no">No</label>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center rating-radio">
+                <h5><b>3. Bo ta conoci cu e orario di e practica di bodokter di cas dentro di bo promer intento?<b></h5>
+                <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3" value="yes">Yes</label>
+                <label class="radio-inline"><input type="radio" name="opt_radio" question="Question 3" value="no">No</label>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>4.Con Satisfecho bo ta cu e orario di do dokter di cas? <b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 4" data_value="">
+                    <li class='star' title='Poor' lnk="rating_3" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_3" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_3" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_3" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_3" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_3"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>4.Con Satisfecho bo ta cu e orario di do dokter di cas? <b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 4" data_value="">
-                      <li class='star' title='Poor' lnk="rating_3" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_3" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_3" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_3" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_3" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_3"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>5. En general mi ta hanja mi dokter di cas accesibel<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 5" data_value="">
+                    <li class='star' title='Poor' lnk="rating_4" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_4" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_4" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_4" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_4" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_4"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>5. En general mi ta hanja mi dokter di cas accesibel<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 5" data_value="">
-                      <li class='star' title='Poor' lnk="rating_4" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_4" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_4" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_4" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_4" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_4"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>6. Con largo bo a warda den sala di espera di bo dokter di cas?<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 6" data_value="">
+                    <li class='star' title='Poor' lnk="rating_5" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_5" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_5" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_5" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_5" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_5"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>6. Con largo bo a warda den sala di espera di bo dokter di cas?<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 6" data_value="">
-                      <li class='star' title='Poor' lnk="rating_5" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_5" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_5" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_5" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_5" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_5"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>7. Con satisfecho bo ta cu trato di assistent di bo dokter di cas?<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 7" data_value="">
+                    <li class='star' title='Poor' lnk="rating_6" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_6" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_6" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_6" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_6" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_6"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>7. Con satisfecho bo ta cu trato di assistent di bo dokter di cas?<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 7" data_value="">
-                      <li class='star' title='Poor' lnk="rating_6" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_6" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_6" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_6" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_6" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_6"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>8. Con satisfecho bo ta cu e splicacion di bo dokter di cas tocante bo keho pakiko bo a
+                    aserca
+                    dokter?<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 8" data_value="">
+                    <li class='star' title='Poor' lnk="rating_7" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_7" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_7" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_7" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_7" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_7"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>8. Con satisfecho bo ta cu e splicacion di bo dokter di cas tocante bo keho pakiko bo a
-                      aserca
-                      dokter?<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 8" data_value="">
-                      <li class='star' title='Poor' lnk="rating_7" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_7" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_7" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_7" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_7" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_7"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>9. Con satisfecho bo ta cue e resultado di bo bishita na bo dokter di cas?<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 9" data_value="">
+                    <li class='star' title='Poor' lnk="rating_8" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_8" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_8" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_8" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_8" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_8"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>9. Con satisfecho bo ta cue e resultado di bo bishita na bo dokter di cas?<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 9" data_value="">
-                      <li class='star' title='Poor' lnk="rating_8" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_8" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_8" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_8" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_8" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_8"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>10. Mi tin confianza den mi dokter di cas?<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 10" data_value="">
+                    <li class='star' title='Poor' lnk="rating_9" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_9" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_9" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_9" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_9" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_9"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>10. Mi tin confianza den mi dokter di cas?<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 10" data_value="">
-                      <li class='star' title='Poor' lnk="rating_9" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_9" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_9" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_9" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_9" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_9"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>11. En general mi ta satisfecho cu e servicio di mi dokter di cas.<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 11" data_value="">
+                    <li class='star' title='Poor' lnk="rating_10" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_10" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_10" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_10" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_10" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_10"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>11. En general mi ta satisfecho cu e servicio di mi dokter di cas.<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 11" data_value="">
-                      <li class='star' title='Poor' lnk="rating_10" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_10" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_10" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_10" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_10" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_10"></span>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>12. Mi tin sentimiento di provacidad na momento di indica mi keho na e assistent di mi
+                    dokter
+                    di cas.<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 12" data_value="">
+                    <li class='star' title='Poor' lnk="rating_11" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_11" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_11" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_11" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_11" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_11"></span>
               </div>
-              <hr>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>12. Mi tin sentimiento di provacidad na momento di indica mi keho na e assistent di mi
-                      dokter
-                      di cas.<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 12" data_value="">
-                      <li class='star' title='Poor' lnk="rating_11" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_11" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_11" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_11" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_11" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_11"></span>
+            </div>
+            <div class="form-group">
+              <div class="text-center">
+                <h5><b>13.Mi ta satisfecho cu e area di reception di mi dokter di cas.<b></h5>
+                <div class='rating-stars text-center'>
+                  <ul id='stars' question="Question 13" data_value="">
+                    <li class='star' title='Poor' lnk="rating_12" data-value='1'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' lnk="rating_12" data-value='2'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' lnk="rating_12" data-value='3'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' lnk="rating_12" data-value='4'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' lnk="rating_12" data-value='5'>
+                      <i class='fa fa-star fa-fw'></i>
+                    </li>
+                  </ul>
                 </div>
+                <span id="rating_12"></span>
               </div>
-              <div class="form-group">
-                <div class="text-center">
-                  <h5><b>13.Mi ta satisfecho cu e area di reception di mi dokter di cas.<b></h5>
-                  <div class='rating-stars text-center'>
-                    <ul id='stars' question="Question 13" data_value="">
-                      <li class='star' title='Poor' lnk="rating_12" data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' lnk="rating_12" data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' lnk="rating_12" data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' lnk="rating_12" data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' lnk="rating_12" data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-				  <span id="rating_12"></span>
-                </div>
-              </div>
-              <hr>
-              <button id="btn_rating" type="button" class="btn btn-lg btn-info btn-block" disabled>
-                <span>Rating Done</span>
-              </button>
-              <hr>
-              <br>
-              <br>
-			<!-- </form> -->
+            </div>
+            <hr>
+            <button id="btn_rating" type="button" class="btn btn-lg btn-info btn-block" disabled>
+              <span>Rating Done</span>
+            </button>
+            <hr>
+            <br>
+            <br>
+            <!-- </form> -->
           </div>
         </div>
       </div>
@@ -445,11 +446,11 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
     <script src="js/azv.js"></script>
     <script>
-		
-	$(document).ready(function () {
-		
-		var answer_selected = 0;
-		  
+
+      $(document).ready(function () {
+
+        var answer_selected = 0;
+
 
         /* 1. Visualizing things on Hover - See next part for action on click */
         $('#stars li').on('mouseover', function () {
@@ -474,9 +475,9 @@
 
         /* 2. Action to perform on click */
         $('#stars li').on('click', function () {
-		  
-		  answer_selected = 0;
-		  
+
+          answer_selected = 0;
+
           var onStar = parseInt($(this).data('value'), 10); // The star currently selected
           var stars = $(this).parent().children('li.star');
 
@@ -498,131 +499,131 @@
             msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
           }
           responseMessage(msg);
-		  
-		  $('#' + $(this).attr('lnk') + '').text($(this).attr('Title'));
-		  
-		  $(this).parent().attr('data_value',onStar);
-          
-			$('.rating-stars').each(function (index, value){			
-				if ($(this).children().attr('data_value') != ''  )
-					answer_selected++;
-			});
-			
-		  if (answer_selected >= 12 && $('input[name="opt_radio"]').is(':checked')){
-			$( "#btn_rating" ).prop( "disabled", false );
-		  }
+
+          $('#' + $(this).attr('lnk') + '').text($(this).attr('Title'));
+
+          $(this).parent().attr('data_value', onStar);
+
+          $('.rating-stars').each(function (index, value) {
+            if ($(this).children().attr('data_value') != '')
+              answer_selected++;
+          });
+
+          if (answer_selected >= 12 && $('input[name="opt_radio"]').is(':checked')) {
+            $("#btn_rating").prop("disabled", false);
+          }
 
         });
-		
-		$('input[name="opt_radio"]').change(function(){
-			
-			answer_selected = 0;
-			
-			$('.rating-stars').each(function (index, value){			
-				if ($(this).children().attr('data_value') != ''  )
-					answer_selected++;
-			});
-			
-			if (answer_selected >= 12 && $('input[name="opt_radio"]').is(':checked')){
-				$( "#btn_rating" ).prop( "disabled", false );
-			}
-			
-		});
+
+        $('input[name="opt_radio"]').change(function () {
+
+          answer_selected = 0;
+
+          $('.rating-stars').each(function (index, value) {
+            if ($(this).children().attr('data_value') != '')
+              answer_selected++;
+          });
+
+          if (answer_selected >= 12 && $('input[name="opt_radio"]').is(':checked')) {
+            $("#btn_rating").prop("disabled", false);
+          }
+
+        });
 
 
-		$('#btn_rating').click(function(e){
-	  
-			// Get all values from controls
-			
-			var json_general_value = '';
-			var json_questions_value = '';
-			var general_index = 0;
-			var total_controls = $('.rating-stars').length + $(':radio[name="opt_radio"]:checked').length;
-			
-			json_general_value = '{ "questionSend" : { "azvNr": "' + $('#azvNr').val() + '", "birthDate": "' + $('#birthDatedate').val() + '",';
-			
-			json_questions_value = ' "question": ['
+        $('#btn_rating').click(function (e) {
 
-			// rating secction
-			$('.rating-stars').each(function (index, value){
-			
-				general_index++;
-				json_questions_value += '{ ';
-				json_questions_value += '"name": "' + $(this).children().attr('question') + '",';
-				json_questions_value += '"value": "' + $(this).children().attr('data_value') + '",';
-				json_questions_value += '"type": "rating"';
-				if (general_index != total_controls)
-					json_questions_value += '}, ';
-				else
-					json_questions_value += '} ';
-			
-			});
-			
-			// ratio secction
-			$('input:radio:checked').each(function() { // Iterate through all checked radio buttons }); 
-			
-				general_index++;
-				json_questions_value += '{ ';
-				json_questions_value += '"name": "' + $(this).attr('question') + '",';
-				json_questions_value += '"value": "' + $(this).val()+ '",';
-				json_questions_value += '"type": "radio"';
-				if (general_index != total_controls)
-					json_questions_value += '}, ';
-				else
-					json_questions_value += '} ';
-			
-			});
-			
-			json_general_value += json_questions_value + '] } } ';
-		  
-		  
-			if ($('#azvNr').val() != '' && $('#birthDatedate').val() != '' && $('#date').val() != '')
-				rating_create(json_general_value);
-			else
-				alert('Please complete the fields');
-			
-		  });
+          // Get all values from controls
+
+          var json_general_value = '';
+          var json_questions_value = '';
+          var general_index = 0;
+          var total_controls = $('.rating-stars').length + $(':radio[name="opt_radio"]:checked').length;
+
+          json_general_value = '{ "questionSend" : { "azvNr": "' + $('#azvNr').val() + '", "birthDate": "' + $('#birthDatedate').val() + '",';
+
+          json_questions_value = ' "question": ['
+
+          // rating secction
+          $('.rating-stars').each(function (index, value) {
+
+            general_index++;
+            json_questions_value += '{ ';
+            json_questions_value += '"name": "' + $(this).children().attr('question') + '",';
+            json_questions_value += '"value": "' + $(this).children().attr('data_value') + '",';
+            json_questions_value += '"type": "rating"';
+            if (general_index != total_controls)
+              json_questions_value += '}, ';
+            else
+              json_questions_value += '} ';
+
+          });
+
+          // ratio secction
+          $('input:radio:checked').each(function () { // Iterate through all checked radio buttons }); 
+
+            general_index++;
+            json_questions_value += '{ ';
+            json_questions_value += '"name": "' + $(this).attr('question') + '",';
+            json_questions_value += '"value": "' + $(this).val() + '",';
+            json_questions_value += '"type": "radio"';
+            if (general_index != total_controls)
+              json_questions_value += '}, ';
+            else
+              json_questions_value += '} ';
+
+          });
+
+          json_general_value += json_questions_value + '] } } ';
+
+
+          if ($('#azvNr').val() != '' && $('#birthDatedate').val() != '' && $('#date').val() != '')
+            rating_create(json_general_value);
+          else
+            alert('Please complete the fields');
+
+        });
 
       });
 
 
-	function responseMessage(msg) {
-		$('.success-box').fadeIn(200);
-		$('.success-box div.text-message').html("<span>" + msg + "</span>");
-	}
-	  
-	function rating_create(json_value){
-	  
-		$method = 'POST';		
-		$url = server + 'rating'
-		$.ajax({
-	
-			type: $method,
-			url: $url,
-			ContentType: "application/json",
-			headers: {
-				//'token': '',
-			},
-			data:  json_value,
-			success: function(data) {
-				
-				rating_create_ok(data);
-			},
-			error: function(data) {
-				rating_create_error(data);
-			}
-		
-		});
-		
-	}
-    	
-	function rating_create_ok(data){
-		window.location.href='home.html';
-	}
-    	
-	function rating_create_error(data){
-		console.log(data);
-	}
+      function responseMessage(msg) {
+        $('.success-box').fadeIn(200);
+        $('.success-box div.text-message').html("<span>" + msg + "</span>");
+      }
+
+      function rating_create(json_value) {
+
+        $method = 'POST';
+        $url = server + 'rating'
+        $.ajax({
+
+          type: $method,
+          url: $url,
+          ContentType: "application/json",
+          headers: {
+            //'token': '',
+          },
+          data: json_value,
+          success: function (data) {
+
+            rating_create_ok(data);
+          },
+          error: function (data) {
+            rating_create_error(data);
+          }
+
+        });
+
+      }
+
+      function rating_create_ok(data) {
+        window.location.href = 'home.html';
+      }
+
+      function rating_create_error(data) {
+        console.log(data);
+      }
 
     </script>
 
