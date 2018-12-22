@@ -291,7 +291,10 @@ hr{
   border-top: 2px solid #eee !important;
 }
 
-RADIO BUTTONS
+.azv-row{
+  margin-bottom: -15px !important;
+}
+/* RADIO BUTTONS */
 .container {
   display: block;
   position: relative;
