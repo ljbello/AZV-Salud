@@ -57,7 +57,7 @@
             <div class="form-group">
               <label class="control-label col-xs-6 align-left">AZV Nr.</label>
               <div class="col-xs-6">
-                <input type="text" class="form-control" id="azvNr" name="azvNr" placeholder="1000002">
+                <input type="text" class="form-control" id="azvNr" name="azvNr" placeholder="1000002" value='1079996600'>
               </div>
             </div>
             <br>
@@ -68,7 +68,7 @@
               <div class="col-xs-6 date">
                 <div class="input-group input-append date datepicker">
                   <input type="text" class="form-control" id="dob" name="dob" data_value='' placeholder="12/29/2018"
-                    value="" />
+                    value='05-11-1982' value="" />
                   <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
               </div>
@@ -288,7 +288,7 @@
         var general_index = 0;
 
 
-        json_general_value = '{ "azv_number": "' + $('#azvNr').val() + '", "azv_dob": "' + $('#dob').val() + '","azv_last_visit": "' + $('#last_visit').val() + '",';
+        json_general_value = '{ "azv_number": "' + $('#azvNr').val() + '", "azv_dob": "' + format_date($('#dob').val()) + '","azv_last_visit": "' + $('#last_visit').val() + '",';
         json_questions_value = ' "azv_rating":{'
 
         $('.rating-control').each(function (index, value) {
@@ -303,7 +303,8 @@
         json_general_value += json_questions_value + '} } ';
 
         if ($('#azvNr').val() != '' && $('#dob').val() != '' && $('#date').val() != '')
-          rating_create(json_general_value);
+          // rating_create(json_general_value);
+          validate_AZV_DOB($('#azvNr').val(), format_date($('#dob').val()), json_general_value);
         else
           alert('Please complete the fields');
 
@@ -418,6 +419,45 @@
       $('.success-box div.text-message').html("<span>" + msg + "</span>");
     }
 
+
+    function validate_AZV_DOB(azvNr, dob, json_value) {
+
+      $method = 'POST';
+      $url = server + 'validateinsured';
+
+      var datastring = '{ "azv_number": "' + azvNr + '",';
+      datastring += ' "azv_dob": "' + dob + '"}';
+      $.ajax({
+
+        type: $method,
+        url: $url,
+        ContentType: "application/json",
+        data: datastring,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        success: function (data) {
+
+          if (data.statuscode == 201) {
+            rating_create(json_value);
+          }
+          else if (data.statuscode == 401) {
+            alert('You are not authorized'); //AQUI VA UN NOTIFY DICIENDO QUE NO ESTA AUTORIZADO
+          }
+          else {
+            alert('Error en el sistema'); //AQUI VA UN NOTIFY DICIENDO QUE HUBO ERROR
+          }
+
+
+        },
+        error: function (data) {
+          rating_create_error(data);
+        }
+
+      });
+
+    }
+
     function rating_create(json_value) {
 
       $method = 'POST';
@@ -429,7 +469,7 @@
         ContentType: "application/json",
         data: json_value,
         headers: {
-          'Content-Type' : 'application/json'
+          'Content-Type': 'application/json'
         },
         success: function (data) {
 
@@ -445,6 +485,20 @@
 
     function rating_create_ok(data) {
       window.location.href = 'home.html';
+
+      if (data.statuscode == 201) {
+        setTimeout(function () {
+        console.log('Rating succesfull'); //AQUI VA UN NOTIFY DICIENDO QUE ESTA BIEN EL RATING
+        window.location.href = 'home.html';
+      }, 3000);
+      }
+      else if (data.statuscode == 401) {
+        alert('You are not authorized');//AQUI VA UN NOTIFY DICIENDO QUE NO ESTA AUTORIZADO
+      }
+      else {
+        alert('Error en el sistema');//AQUI VA UN NOTIFY DICIENDO QUE HUBO ERROR
+      }
+
     }
 
     function rating_create_error(data) {
