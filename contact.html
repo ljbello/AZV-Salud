@@ -124,11 +124,12 @@
   <script>
 
 
-    $("body").overhang({
-      type: "error",
-      message: "Whoops! Something went wrong!",
-      closeConfirm: true
-    });
+$("body").overhang({
+  type: "success",
+  message: "A user has reported you!",
+  duration: 3,
+  overlay: true
+});
 
     $("#contact_us").submit(function (e) {
       e.preventDefault();
