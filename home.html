@@ -49,29 +49,43 @@
     </nav>
 
     <div class="row top">
-      <div class="col-md-4 col-xs-2"><img class="azv-right home-img" src="img/azv_dr.png" /></div>
-      <div class="col-md-6 col-xs-10">
-        <section class="panel">
-          <div class="panel-heading white background-blue"><b> Doctor na Warda</b> </div>
-          <div class="panel-body">
-            <div id="doctor_content" name="doctor_content">
+      <div class="hidden" id="div_dr">
+        <div class="col-md-4 col-xs-2"><img class="azv-right home-img" src="img/azv_dr.png" /></div>
+        <div class="col-md-6 col-xs-10">
+          <section class="panel">
+            <div class="panel-heading white background-blue"><b> Doctor na Warda</b> </div>
+            <div class="panel-body">
+              <div id="doctor_content" name="doctor_content">
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
-      <div class="col-md-4 col-xs-2"><img class="azv-right home-img" src="img/azv_botica.png" /></div>
-      <div class="col-md-6 col-xs-10">
-        <section class="panel">
-          <div class="panel-heading white background-green"><b> Botica na Warda</b> </div>
-          <div class="panel-body">
-            <div id="botica_content" name="botica_content">
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-    <div class="row top">
 
+      <div class="hidden" id="div_botica">
+        <div class="col-md-4 col-xs-2"><img class="azv-right home-img" src="img/azv_botica.png" /></div>
+        <div class="col-md-6 col-xs-10">
+          <section class="panel">
+            <div class="panel-heading white background-green"><b> Botica na Warda</b> </div>
+            <div class="panel-body">
+              <div id="botica_content" name="botica_content">
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="hidden" id="div_dentist">
+        <div class="col-md-4 col-xs-2"><img class="azv-right home-img" src="img/azv_dentist.png" /></div>
+        <div class="col-md-6 col-xs-10">
+          <section class="panel">
+            <div class="panel-heading white background-blue"><b> Dentista na Warda</b> </div>
+            <div class="panel-body">
+              <div id="dentist_content" name="dentist_content">
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
     <nav class="navbar navbar-fixed-bottom navbar-bottom">
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
@@ -97,6 +111,7 @@
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="js/js.cookie.js"></script>
   <script src="js/azv.js"></script>
 
 
@@ -145,6 +160,7 @@
         var k = 0;
         var dr = '';
         var botica = '';
+        var dentist = '';
 
         var data_length = data.length;
         if (data_length > 0) {
@@ -152,39 +168,57 @@
           $.each(data, function (i, item) {
 
             if (item.typedoctor == 1) {
+
+              $('#div_dr').removeClass('hidden');
+
               dr += '<div class="row">';
               dr += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-left">';
-              dr += '<b>'+item.location+'</b>';
+              dr += '<b>' + item.location + '</b>';
               dr += '</div>';
               dr += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.city + '</p></div>';
               dr += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
               dr += '<b><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</b>';
               dr += '</div>';
               dr += '</div>';
-              if (item.typedoctor == (data[i+1].typedoctor)) {
+              if (item.typedoctor == (data[i + 1].typedoctor)) {
                 dr += '<hr>';
               }
             }
             else if (item.typedoctor == 2) {
+              $('#div_botica').removeClass('hidden');
               botica += '<div class="row">';
               botica += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-left">';
-              botica += '<b>'+item.location+'</b>';
+              botica += '<b>' + item.location + '</b>';
               botica += '</div>';
               botica += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.city + '</p></div>';
               botica += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
               botica += '<b><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</b>';
               botica += '</div>';
               botica += '</div>';
-              // botica += '<hr>';
-
               if (i != (data_length - 1)) {
                 botica += '<hr>';
+              }
+            }
+            else{
+              $('#div_dentist').removeClass('hidden');
+              dentist += '<div class="row">';
+              dentist += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-left">';
+              dentist += '<b>' + item.location + '</b>';
+              dentist += '</div>';
+              dentist += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.city + '</p></div>';
+              dentist += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
+              dentist += '<b><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</b>';
+              dentist += '</div>';
+              dentist += '</div>';
+              if (i != (data_length - 1)) {
+                dentist += '<hr>';
               }
             }
           });
 
           $('#doctor_content').append(dr);
           $('#botica_content').append(botica);
+          $('#dentits_content').append(dentist);
 
         }
 
