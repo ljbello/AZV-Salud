@@ -91,7 +91,6 @@
                   <span id="payment-button-sending" style="display:none;">Sending…</span>
                 </button>
               </div>
-              <input name="csrfToken" value="" type="hidden">
             </form>
           </div>
         </div>
@@ -113,7 +112,7 @@
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
-  <script src="js/jquery.cookie.min.js"></script>
+  <script src="js/js.cookie.js"></script>
   <script src="js/azv.js"></script>
 
 
@@ -122,18 +121,21 @@
     $("#contact_us").submit(function (e) {
       e.preventDefault();
 
-      var datastring = $("#contact_us").serialize();
+      var datastring = '{ "first_name": "' + $('#first_name').val() + '",';
+      datastring += ' "last_name": "' + $('#last_name').val() + '",';
+      datastring += ' "phone_number": "' + $('#phone_number').val() + '",';
+      datastring += ' "email": "' + $('#email').val() + '",';
+      datastring += ' "subject": "' + $('#subject').val() + '",';
+      datastring += ' "message": "' + $('#message').val() + '"}';
+
       $.ajax({
         type: "POST",
         url: server + 'contact',
         data: datastring,
-        dataType: "json",
+        ContentType: "application/json",
 
         headers: {
-          //'token': '',
           'Content-Type': 'application/json',
-          'token': $.cookie("session_token"),
-
         },
         success: function (data) {
           alert('Enviado con exito');
