@@ -19,6 +19,9 @@
   <link href="css/azv.css" rel="stylesheet">
   <link href="css/font-awesome.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/jquery-ui.min.css" rel="stylesheet">
+  <link href="css/overhang.min.css" rel="stylesheet">
+
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -57,7 +60,7 @@
             <div class="form-group">
               <label class="control-label col-xs-6 align-left">AZV Nr.</label>
               <div class="col-xs-6">
-                <input type="text" class="form-control" id="azvNr" name="azvNr" placeholder="1000002" value='1079996600'>
+                <input type="text" class="form-control" id="azvNr" name="azvNr" placeholder="1000002">
               </div>
             </div>
             <br>
@@ -67,8 +70,7 @@
               <label class="control-label col-xs-6 align-left">Fecha di naciemento</label>
               <div class="col-xs-6 date">
                 <div class="input-group input-append date datepicker">
-                  <input type="text" class="form-control" id="dob" name="dob" data_value='' placeholder="12/29/2018"
-                    value='05-11-1982' value="" />
+                  <input type="text" class="form-control" id="dob" name="dob" data_value='' placeholder="12/29/2018" value="" />
                   <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
               </div>
@@ -123,6 +125,8 @@
   <script src="js/bootstrap.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
   <script src="js/js.cookie.js"></script>
+  <!-- <script src="js/jquery-ui.min.js"></script> -->
+  <script src="js/overhang.min.js"></script>
   <script>
 
     var test_data = "";
@@ -141,8 +145,6 @@
 
     $(document).ready(function () {
       azv_rating_list_ok(test_data);
-
-
       // azv_rating_list();
 
       /* 1. Visualizing things on Hover - See next part for action on click */
@@ -306,7 +308,12 @@
           // rating_create(json_general_value);
           validate_AZV_DOB($('#azvNr').val(), format_date($('#dob').val()), json_general_value);
         else
-          alert('Please complete the fields');
+          $("body").overhang({
+          type: "warning",
+          message: "Please! fill in all fields",
+          duration: 3,
+          overlay: true
+        });
 
       });
       // alert(json_value);
@@ -442,10 +449,21 @@
             rating_create(json_value);
           }
           else if (data.statuscode == 401) {
-            alert('You are not authorized'); //AQUI VA UN NOTIFY DICIENDO QUE NO ESTA AUTORIZADO
+            $("body").overhang({
+              type: "error",
+              message: "Ups. The AZV Nr. Or Date of birth is wrong or user not registered in AZV",
+              duration: 3,
+              overlay: true
+            });
+
           }
           else {
-            alert('Error en el sistema'); //AQUI VA UN NOTIFY DICIENDO QUE HUBO ERROR
+            $("body").overhang({
+              type: "error",
+              message: "Oeps! We have an error in the system, please try again in a few moments",
+              duration: 3,
+              overlay: true
+            });
           }
 
 
@@ -453,9 +471,7 @@
         error: function (data) {
           rating_create_error(data);
         }
-
       });
-
     }
 
     function rating_create(json_value) {
@@ -478,31 +494,58 @@
         error: function (data) {
           rating_create_error(data);
         }
-
       });
-
     }
 
     function rating_create_ok(data) {
-      window.location.href = 'home.html';
-
       if (data.statuscode == 201) {
         setTimeout(function () {
-        console.log('Rating succesfull'); //AQUI VA UN NOTIFY DICIENDO QUE ESTA BIEN EL RATING
-        window.location.href = 'home.html';
-      }, 3000);
+          $("body").overhang({
+            type: "success",
+            message: "Thanks! Rating created successfully.",
+            duration: 3,
+            overlay: true
+          });
+          window.location.href = 'home.html';
+        }, 3500);
       }
       else if (data.statuscode == 401) {
-        alert('You are not authorized');//AQUI VA UN NOTIFY DICIENDO QUE NO ESTA AUTORIZADO
+        $("body").overhang({
+          type: "error",
+          message: "Ups. The AZV Nr. Or Date of birth is wrong or user not registered in AZV",
+          duration: 3,
+          overlay: true
+        });
       }
       else {
-        alert('Error en el sistema');//AQUI VA UN NOTIFY DICIENDO QUE HUBO ERROR
+        $("body").overhang({
+          type: "error",
+          message: "Oeps! We have an error in the system, please try again in a few moments",
+          duration: 3,
+          overlay: true
+        });
       }
-
     }
 
     function rating_create_error(data) {
       console.log(data);
+      $("body").overhang({
+        type: "error",
+        message: "Oeps! We have an error in the system, please try again in a few moments",
+        duration: 3,
+        overlay: true
+      });
+    }
+
+    function azv_rating_list_error(data){
+      console.log(data);
+      $("body").overhang({
+        type: "error",
+        message: "Oeps! We have an error in the system, please try again in a few moments",
+        duration: 3,
+        overlay: true
+      });
+
     }
 
   </script>
