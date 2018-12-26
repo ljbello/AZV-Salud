@@ -121,14 +121,6 @@
 
   <script>
 
-$("body").overhang({
-  type: "success",
-  message: "A user has reported you!",
-  duration: 3,
-  overlay: true
-});
-    
-
     $(function () {
 
       //azv_salud_doctor_list();
@@ -238,6 +230,12 @@ $("body").overhang({
 
       function azv_salud_doctor_list_error(data) {
         console.log(data);
+        $("body").overhang({
+          type: "error",
+          message: "Oeps! We have an error in the system, please try again in a few moments",
+          duration: 3,
+          overlay: true
+        });
       }
 
     });

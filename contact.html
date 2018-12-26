@@ -122,15 +122,6 @@
 
 
   <script>
-
-
-$("body").overhang({
-  type: "success",
-  message: "A user has reported you!",
-  duration: 3,
-  overlay: true
-});
-
     $("#contact_us").submit(function (e) {
       e.preventDefault();
 
@@ -151,10 +142,24 @@ $("body").overhang({
           'Content-Type': 'application/json',
         },
         success: function (data) {
-          alert('Enviado con exito');
+          setTimeout(function () {
+          $("body").overhang({
+            type: "success",
+            message: "Thanks! Comments sent successfully.",
+            duration: 3,
+            overlay: true
+          });
+          window.location.href = 'home.html';
+        }, 3500);
+
         },
         error: function () {
-          alert('error handling here');
+          $("body").overhang({
+          type: "error",
+          message: "Oeps! We have an error in the system, please try again in a few moments",
+          duration: 3,
+          overlay: true
+        });
         }
       });
 

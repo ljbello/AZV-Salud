@@ -146,15 +146,6 @@
 
     $(document).ready(function () {
       azv_rating_list_ok(test_data);
-
-
-      $("body").overhang({
-        type: "success",
-        message: "A user has reported you!",
-        duration: 3,
-        overlay: true
-      });
-
       // azv_rating_list();
 
       /* 1. Visualizing things on Hover - See next part for action on click */
@@ -318,7 +309,12 @@
           // rating_create(json_general_value);
           validate_AZV_DOB($('#azvNr').val(), format_date($('#dob').val()), json_general_value);
         else
-          alert('Please complete the fields');
+          $("body").overhang({
+          type: "warning",
+          message: "Please! fill in all fields",
+          duration: 3,
+          overlay: true
+        });
 
       });
       // alert(json_value);
@@ -454,10 +450,21 @@
             rating_create(json_value);
           }
           else if (data.statuscode == 401) {
-            alert('You are not authorized'); //AQUI VA UN NOTIFY DICIENDO QUE NO ESTA AUTORIZADO
+            $("body").overhang({
+              type: "error",
+              message: "Ups. The AZV Nr. Or Date of birth is wrong or user not registered in AZV",
+              duration: 3,
+              overlay: true
+            });
+
           }
           else {
-            alert('Error en el sistema'); //AQUI VA UN NOTIFY DICIENDO QUE HUBO ERROR
+            $("body").overhang({
+              type: "error",
+              message: "Oeps! We have an error in the system, please try again in a few moments",
+              duration: 3,
+              overlay: true
+            });
           }
 
 
@@ -465,9 +472,7 @@
         error: function (data) {
           rating_create_error(data);
         }
-
       });
-
     }
 
     function rating_create(json_value) {
@@ -494,24 +499,54 @@
     }
 
     function rating_create_ok(data) {
-      window.location.href = 'home.html';
-
       if (data.statuscode == 201) {
         setTimeout(function () {
-          console.log('Rating succesfull'); //AQUI VA UN NOTIFY DICIENDO QUE ESTA BIEN EL RATING
+          $("body").overhang({
+            type: "success",
+            message: "Thanks! Rating created successfully.",
+            duration: 3,
+            overlay: true
+          });
           window.location.href = 'home.html';
-        }, 3000);
+        }, 3500);
       }
       else if (data.statuscode == 401) {
-        alert('You are not authorized');//AQUI VA UN NOTIFY DICIENDO QUE NO ESTA AUTORIZADO
+        $("body").overhang({
+          type: "error",
+          message: "Ups. The AZV Nr. Or Date of birth is wrong or user not registered in AZV",
+          duration: 3,
+          overlay: true
+        });
       }
       else {
-        alert('Error en el sistema');//AQUI VA UN NOTIFY DICIENDO QUE HUBO ERROR
+        $("body").overhang({
+          type: "error",
+          message: "Oeps! We have an error in the system, please try again in a few moments",
+          duration: 3,
+          overlay: true
+        });
       }
     }
 
     function rating_create_error(data) {
       console.log(data);
+      $("body").overhang({
+        type: "error",
+        message: "Oeps! We have an error in the system, please try again in a few moments",
+        duration: 3,
+        overlay: true
+      });
+    }
+
+    function azv_rating_list_error(data){
+      console.log(data);
+      $("body").overhang({
+        type: "error",
+        message: "Oeps! We have an error in the system, please try again in a few moments",
+        duration: 3,
+        overlay: true
+      });
+
     }
 
   </script>
