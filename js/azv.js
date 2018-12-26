@@ -22,7 +22,7 @@ function format_date(date) {
 		var d = new Date(date)
 
 		var mm = d.getMonth() + 1; // getMonth() is zero-based
-		var dd = d.getDate() + 1;
+		var dd = d.getDate();
 
 		var date_return = [d.getFullYear(),
 		(mm > 9 ? '' : '0') + mm,
