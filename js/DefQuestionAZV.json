@@ -2,7 +2,7 @@
 		"questions": "Tawata facil pa haya un cita cu bo dokter di cas ? ",
 		"type": "rating",
 		"extras": {
-			"options": ["Hopi facil", "Facil", "Dificil", "Hopi dificil"]
+			"options": ["Hopi dificil", "Dificil", "Facil","Hopi facil" ]
 		},
 		"icon": "start"
 	},
@@ -11,7 +11,7 @@
 		"questions": "Bo practica di dokter di cas a contesta telefon dentro un tempo rasonabel?",
 		"type": "rating",
 		"extras": {
-			"options": ["Semper", "Mayoria di biaha", " Tin biaha", "Nunca"]
+			"options": ["Nunca", "Tin biaha", "Mayoria di biaha","Semper"]
 		},
 		"icon": "start"
 	},
@@ -20,14 +20,14 @@
 		"questions": "Con largo bo a warda den sala di warda di bo dokter di cas?",
 		"type": "rating",
 		"extras": {
-			"options": ["Menos cu 5 minuut", "Entre 5 pa 15 minuut", "Entre 15 pa 30 minuut", "Mas cu 30 minuut"]
+			"options": ["Mas cu 30 minuut", "Entre 15 pa 30 minuut", "Entre 5 pa 15 minuut", "Menos cu 5 minuut"]
 		},
 		"icon": "start"
 	}, {
 		"questions": "Bo ta satisfecho cu e orario di bo dokter di cas?",
 		"type": "rating",
 		"extras": {
-			"options": ["Hopi satisfecho", "Satisfecho", "Insatisfecho", "Hopi insatisfecho"]
+			"options": ["Hopi insatisfecho",  "Insatisfecho","Satisfecho", "Hopi satisfecho"]
 		},
 		"icon": "start"
 	},
@@ -36,28 +36,28 @@
 		"questions": "Bo ta satisfecho con bo a wordo trata door di assistent di dokter?",
 		"type": "rating",
 		"extras": {
-			"options": ["Hopi satisfecho", "Satisfecho", "Insatisfecho", "Hopi insatisfecho"]
+			"options": ["Hopi insatisfecho",  "Insatisfecho","Satisfecho", "Hopi satisfecho"]
 		},
 		"icon": "start"
 	}, {
 		"questions": "Bo ta satisfecho cu e splicacion di e dokter tocante bo keho.",
 		"type": "rating",
 		"extras": {
-			"options": ["Hopi satisfecho", "Satisfecho", "Insatisfecho", "Hopi insatisfecho"]
+			"options": ["Hopi insatisfecho",  "Insatisfecho","Satisfecho", "Hopi satisfecho"]
 		},
 		"icon": "start"
 	}, {
 		"questions": "Bo ta satisfecho cu e resultado di e bishita na bo dokter di cas.",
 		"type": "rating",
 		"extras": {
-			"options": ["Hopi satisfecho", "Satisfecho", "Insatisfecho", "Hopi insatisfecho"]
+			"options": ["Hopi insatisfecho",  "Insatisfecho","Satisfecho", "Hopi satisfecho"]
 		},
 		"icon": "start"
 	}, {
 		"questions": "Mi tin confianza den mi dokter di cas.",
 		"type": "rating",
 		"extras": {
-			"options": ["Hopi confianza", "Confianza", "Tiki confianza", "Niun confiana"]
+			"options": ["Niun confiana", "Tiki confianza", "Confianza", "Hopi confianza"]
 		},
 		"icon": "start"
 	}
