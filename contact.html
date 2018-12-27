@@ -142,24 +142,26 @@
           'Content-Type': 'application/json',
         },
         success: function (data) {
-          setTimeout(function () {
           $("body").overhang({
             type: "success",
             message: "Thanks! Comments sent successfully.",
             duration: 3,
+            primary: "#6EAF22",
+            accent: "#3a5d12",
             overlay: true
           });
-          window.location.href = 'home.html';
-        }, 3500);
+          setTimeout(function () {
+            window.location.href = 'home.html';
+          }, 3500);
 
         },
         error: function () {
           $("body").overhang({
-          type: "error",
-          message: "Oeps! We have an error in the system, please try again in a few moments",
-          duration: 3,
-          overlay: true
-        });
+            type: "error",
+            message: "Oeps! We have an error in the system, please try again in a few moments",
+            duration: 3,
+            overlay: true
+          });
         }
       });
 
