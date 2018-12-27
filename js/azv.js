@@ -2,7 +2,7 @@
 //var server = 'http://app.infraruba.com:6969/api/'
 // var server = window.location.protocol + '//' + window.location.host + '/api/';
 
-var server = 'http://18.221.41.184/api/';
+var server = 'https://18.221.41.184/api/';
 
 
 
