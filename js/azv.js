@@ -2,11 +2,7 @@
 //var server = 'http://app.infraruba.com:6969/api/'
 // var server = window.location.protocol + '//' + window.location.host + '/api/';
 
-var server = 'https://18.221.41.184/api/';
-
-
-
-
+var server = 'https://azvbackend.qwihi.com/api/';
 //Disable buttons for 3 seconds prevent dobleclick
 $(".button-disabled").click(function () {
 	var button_obj = $(this);
