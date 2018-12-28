@@ -93,7 +93,7 @@
                   <span id="payment-button-sending" style="display:none;">Sending…</span>
                 </button>
               </div>
-              <br>
+              <hr>
               <br>
               <br>
               <br>
@@ -113,8 +113,8 @@
         <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
       </div>
     </nav>
+    <div class="loader hidden"></div>
   </div>
-
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/js.cookie.js"></script>
@@ -123,54 +123,67 @@
   <script src="js/overhang.min.js"></script>
   <script src="js/azv.js"></script>
 
-
   <script>
     $("#contact_us").submit(function (e) {
       e.preventDefault();
+      loader(true);
+      $("#contact_us").prop("disabled", true);
 
-      var datastring = '{ "first_name": "' + $('#first_name').val() + '",';
-      datastring += ' "last_name": "' + $('#last_name').val() + '",';
-      datastring += ' "phone_number": "' + $('#phone_number').val() + '",';
-      datastring += ' "email": "' + $('#email').val() + '",';
-      datastring += ' "subject": "' + $('#subject').val() + '",';
-      datastring += ' "message": "' + $('#message').val() + '"}';
+      if ($('#first_name').val() != '' && $('#last_name').val() != '' && $('#phone_number').val() != '' && $('#email').val() != '' && $('#subject').val() != '' && $('#message').val() != '') {
 
-      $.ajax({
-        type: "POST",
-        url: server + 'contact',
-        data: datastring,
-        ContentType: "application/json",
+        var datastring = '{ "first_name": "' + $('#first_name').val() + '",';
+        datastring += ' "last_name": "' + $('#last_name').val() + '",';
+        datastring += ' "phone_number": "' + $('#phone_number').val() + '",';
+        datastring += ' "email": "' + $('#email').val() + '",';
+        datastring += ' "subject": "' + $('#subject').val() + '",';
+        datastring += ' "message": "' + $('#message').val() + '"}';
 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        success: function (data) {
-          $("body").overhang({
-            type: "success",
-            message: "Thanks! Comments sent successfully.",
-            duration: 3,
-            primary: "#6EAF22",
-            accent: "#3a5d12",
-            overlay: true
-          });
-          setTimeout(function () {
-            window.location.href = 'home.html';
-          }, 3500);
-
-        },
-        error: function () {
-          $("body").overhang({
-            type: "error",
-            message: "Oeps! We have an error in the system, please try again in a few moments",
-            duration: 3,
-            overlay: true
-          });
-        }
-      });
-
+        $.ajax({
+          type: "POST",
+          url: server + 'contact',
+          data: datastring,
+          ContentType: "application/json",
+          headers: {
+          },
+          success: function (data) {
+            loader(false);
+            $("body").overhang({
+              type: "success",
+              message: "Thanks! Comments sent successfully.",
+              duration: 3,
+              primary: "#6EAF22",
+              accent: "#3a5d12",
+              overlay: true
+            });
+            setTimeout(function () {
+              window.location.href = 'home.html';
+            }, 2500);
+          },
+          error: function () {
+            $("body").overhang({
+              type: "error",
+              message: "Oeps! We have an error in the system, please try again in a few moments",
+              duration: 3,
+              overlay: true
+            });
+          },
+          complete: function (data) {
+            loader(false);
+            $("#contact_us").prop("disabled", false);
+          }
+        });
+      }
+      else {
+        $("body").overhang({
+          type: "warn",
+          message: "Please! fill in all fields",
+          duration: 3,
+          overlay: true
+        });
+      }
+      loader(false);
+      $("#contact_us").prop("disabled", false);
     });
-
-
   </script>
 </body>
 

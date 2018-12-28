@@ -435,6 +435,7 @@
         <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
       </div>
     </nav>
+    <div class="loader hidden"></div>
   </div> <!-- /container -->
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/jquery.js"></script>
@@ -464,6 +465,7 @@
     });
 
     $(document).ready(function () {
+      loader(true);
       azv_rating_list_ok(test_data);
       // azv_rating_list();
 
@@ -486,7 +488,6 @@
           $(this).removeClass('hover');
         });
       });
-
 
       /* 2. Action to perform on click */
       $('#stars li').on('click', function () {
@@ -586,7 +587,6 @@
 
       $('select').change(function () {
         valid_dates = true;
-
         $(".date").each(function () {
           if ($.trim($(this).val()).length == 0) {
             valid_dates = false;
@@ -604,27 +604,10 @@
 
       });
 
-
-
-      // $('#dob').change(function () {
-      //   if ($(this).val() != '') {
-      //     if (answer_selected >= total_controls) {
-      //       $("#btn_rating").prop("disabled", false);
-      //     }
-      //   }
-      // });
-
-      // $('#azv_last_visit').change(function () {
-      //   if ($(this).val() != '') {
-      //     if (answer_selected >= total_controls) {
-      //       $("#btn_rating").prop("disabled", false);
-      //     }
-      //   }
-      // });
-
-
-
       $('#btn_rating').click(function (e) {
+
+        e.preventDefault();
+        $("#btn_rating").prop("disabled", true);
 
         $(".date").each(function () {
           if ($.trim($(this).val()).length == 0) {
@@ -633,14 +616,9 @@
         });
 
         if (valid_dates) {
-
-
-          // Get all values from controls
-
           var json_general_value = '';
           var json_questions_value = '';
           var general_index = 0;
-
 
           json_general_value = '{ "azv_number": "' + $('#azvNr').val() + '", "azv_dob": "' + $('#dob').val() + '","azv_last_visit": "' + $('#azv_last_visit').val() + '",';
           json_questions_value = ' "azv_rating":{'
@@ -653,36 +631,33 @@
 
           });
 
-
           json_general_value += json_questions_value + '} } ';
 
           if ($('#azvNr').val() != '' && $('#dob').val() != '' && $('#azv_last_visit').val() != '')
-            // rating_create(json_general_value);
             validate_AZV_DOB($('#azvNr').val(), $('#dob').val(), json_general_value);
           else
             $("body").overhang({
-              type: "warning",
+              type: "warn",
               message: "Please! fill in all fields",
               duration: 3,
               overlay: true
             });
-
+            $("#btn_rating").prop("disabled", false);
         }
         else {
           $("body").overhang({
-            type: "warning",
+            type: "warn",
             message: "Please! fill in all date fields",
             duration: 3,
             overlay: true
           });
+          $("#btn_rating").prop("disabled", false);
         }
       });
-      // alert(json_value);
-
     });
 
     function azv_rating_list() {
-      // loader();
+      loader(true);
       $method = 'GET';
       $url = server + 'rating';
       $.ajax({
@@ -696,9 +671,12 @@
         },
         error: function (data) {
           rating_create_error(data);
+        },
+        complete: function (data) {
+          loader(false);
+          $("#btn_rating").prop("disabled", false);
         }
       });
-
     }
 
     function azv_rating_list_ok(data) {
@@ -774,12 +752,12 @@
           html_questions += '</div>';
           html_questions += '<hr class="azv-hr">';
 
-
           $('#questions').append(html_questions);
           html_questions = '';
 
         });
       }
+      loader(false);
     }
 
     function responseMessage(msg) {
@@ -787,9 +765,8 @@
       $('.success-box div.text-message').html("<span>" + msg + "</span>");
     }
 
-
     function validate_AZV_DOB(azvNr, dob, json_value) {
-
+      loader(true);
       $method = 'POST';
       $url = server + 'validateinsured';
 
@@ -826,21 +803,23 @@
               overlay: true
             });
           }
-
-
         },
         error: function (data) {
           rating_create_error(data);
+        },
+        complete: function (data) {
+          loader(false);
+          $("#btn_rating").prop("disabled", false);
         }
       });
     }
 
     function rating_create(json_value) {
-
+      loader(true);
+      $("#btn_rating").prop("disabled", true);
       $method = 'POST';
       $url = server + 'rating'
       $.ajax({
-
         type: $method,
         url: $url,
         ContentType: "application/json",
@@ -853,6 +832,10 @@
         },
         error: function (data) {
           rating_create_error(data);
+        },
+        complete: function (data) {
+          loader(false);
+          $("#btn_rating").prop("disabled", false);
         }
       });
     }
@@ -860,16 +843,16 @@
     function rating_create_ok(data) {
       if (data.statuscode == 201) {
         $("body").overhang({
-            type: "success",
-            message: "Thanks! Rating created successfully.",
-            duration: 3,
-            primary: "#6EAF22",
-            accent: "#3a5d12",
-            overlay: true
-          });
+          type: "success",
+          message: "Thanks! Rating created successfully.",
+          duration: 3,
+          primary: "#6EAF22",
+          accent: "#3a5d12",
+          overlay: true
+        });
         setTimeout(function () {
           window.location.href = 'home.html';
-        }, 3500);
+        }, 2500);
       }
       else if (data.statuscode == 401) {
         $("body").overhang({

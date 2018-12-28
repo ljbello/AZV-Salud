@@ -99,6 +99,7 @@
         <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
       </div>
     </nav>
+    <div class="loader hidden"></div>
   </div> <!-- /container -->
   <!-- <div class="row">
   <div class="footer">
@@ -122,16 +123,11 @@
 
     $(function () {
 
-      //azv_salud_doctor_list();
-
-      // test_data = '[{"id": 1,"typedoctor": 1,"name": "Noris Yagua-Velasquez","type": "Doctor di Cas","location": [{"city": "Noord 63","hospital": "Urgent Care Aruba ","phonenumber": "5860512" }]},{"id": 2,"typedoctor": 1,"name": "Jillian Jones","type": "Doctor di Cas","location": [{"city": "De La Sallestraat 71 A","hospital": "Hospital Name","phonenumber": "5839919"}]},{"id": 3,"typedoctor": 2,"name": "Botica Aloe","type": "Botica","location": [{"city": "Pos Chiquito 83, Aruba","hospital": "","phonenumber": "75844606"}]},{"id": 3,"typedoctor": 2,"name": "Botica Di Servicio Noord","type": "Botica","location": [{"city": "Caya Frans Figaroa 82, Noord, Aruba","hospital": "","phonenumber": "76408443"}]}]';
       test_data = '[{"id": 1,"typedoctor": 1,"name": "Noris Yagua-Velasquez","type": "Doctor di Cas","location":"Pabow di brug", "city": "Noord 63","hospital": "Urgent Care Aruba ","phonenumber": "5860512" },{"id": 2,"typedoctor": 1,"name": "Jillian Jones","type": "Doctor di Cas","location":"Pariba di brug", "city": "De La Sallestraat 71 A","hospital": "Hospital Name","phonenumber": "5839919"},{"id": 3,"typedoctor": 2,"name": "Botica Aloe","type": "Botica","location":"Pariba di brug","city": "Pos Chiquito 83, Aruba","hospital": "","phonenumber": "75844606"},{"id": 3,"typedoctor": 2,"name": "Botica Di Servicio Noord","type": "Botica","location":"Pabow di brug","city": "Caya Frans Figaroa 82, Noord, Aruba","hospital": "","phonenumber": "76408443"}]';
-
       azv_salud_doctor_list_ok(test_data);
-      // azv_salud_doctor_list();
 
       function azv_salud_doctor_list() {
-        // loader();
+        loader(true);
         $method = 'GET';
         $url = server + 'medicalsp';
         $.ajax({
@@ -139,28 +135,25 @@
           type: $method,
           url: $url,
           ContentType: "application/json",
-          //data: 'user_default_product_detail="user_company":"'+$('#user_company').val()+'"',
           headers: {
-            //'token':$.cookie('token')
           },
           success: function (data) {
-
             azv_salud_doctor_list_ok(data);
-
           },
           error: function (data) {
             azv_salud_doctor_list_error(data);
+          },
+          complete: function(data){
+            loader(false);
           }
         });
 
       }
 
       function azv_salud_doctor_list_ok(data) {
-
+        loader(true);
         data = jQuery.parseJSON(data);
-
-        flag = true;
-        var k = 0;
+        
         var dr = '';
         var botica = '';
         var dentist = '';
@@ -169,9 +162,7 @@
         if (data_length > 0) {
 
           $.each(data, function (i, item) {
-
             if (item.typedoctor == 1) {
-
               $('#div_dr').removeClass('hidden');
 
               dr += '<div class="row">';
@@ -189,6 +180,7 @@
             }
             else if (item.typedoctor == 2) {
               $('#div_botica').removeClass('hidden');
+
               botica += '<div class="row">';
               botica += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-left">';
               botica += '<b>' + item.location + '</b>';
@@ -204,6 +196,7 @@
             }
             else{
               $('#div_dentist').removeClass('hidden');
+
               dentist += '<div class="row">';
               dentist += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-left">';
               dentist += '<b>' + item.location + '</b>';
@@ -222,9 +215,8 @@
           $('#doctor_content').append(dr);
           $('#botica_content').append(botica);
           $('#dentits_content').append(dentist);
-
+          loader(false);
         }
-
       }
 
       function azv_salud_doctor_list_error(data) {
@@ -236,8 +228,8 @@
           overlay: true
         });
       }
-
     });
+
   </script>
 
 </body>
