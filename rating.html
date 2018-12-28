@@ -438,16 +438,14 @@
     <div class="loader hidden"></div>
   </div> <!-- /container -->
   <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/jquery.js"></script>
-  <script src="js/jquery.cookie.min.js"></script>
-
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/bootstrap.js"></script>
   <script src="js/js.cookie.js"></script>
+  <script src="js/overhang.min.js"></script>
   <script src="js/jquery-ui.min.js"></script>
   <script src="js/overhang.min.js"></script>
   <script src="js/azv.js"></script>
-  <script>
+
+  <script type="text/javascript">
 
     var test_data = "";
     var total_controls = 1;
@@ -458,7 +456,7 @@
       type: 'GET',
       url: 'js/DefQuestionAZV.json',
       ContentType: "application/json",
-      async: false,
+      async: true,
       success: function (response) {
         test_data = response;
       }
@@ -601,58 +599,62 @@
             $("#btn_rating").prop("disabled", false);
           }
         }
+      });
+    });
 
+    $('#btn_rating').click(function (e) {
+      e.preventDefault();
+      $("#btn_rating").prop("disabled", true);
+
+      $(".date").each(function () {
+        if ($.trim($(this).val()).length == 0) {
+          valid_dates = false;
+        }
       });
 
-      $('#btn_rating').click(function (e) {
-        e.preventDefault();
-        $("#btn_rating").prop("disabled", true);
+      if (valid_dates) {
+        var json_general_value = '';
+        var json_questions_value = '';
+        var general_index = 0;
 
-        $(".date").each(function () {
-          if ($.trim($(this).val()).length == 0) {
-            valid_dates = false;
+        json_general_value = '{ "azv_number": "' + $('#azvNr').val() + '", "azv_dob": "' + $('#dob').val() + '","azv_last_visit": "' + $('#azv_last_visit').val() + '",';
+        json_questions_value = ' "azv_rating":{'
+
+        $('.rating-control').each(function (index, value) {
+          if (index != 0) {
+            json_questions_value += ',';
           }
+          json_questions_value += '"' + $(this).children().attr('question') + '": "' + $('#rating_' + $(this).children().attr('data_value') + '').text() + '"';
+
         });
 
-        if (valid_dates) {
-          var json_general_value = '';
-          var json_questions_value = '';
-          var general_index = 0;
+        json_general_value += json_questions_value + '} } ';
 
-          json_general_value = '{ "azv_number": "' + $('#azvNr').val() + '", "azv_dob": "' + $('#dob').val() + '","azv_last_visit": "' + $('#azv_last_visit').val() + '",';
-          json_questions_value = ' "azv_rating":{'
-
-          $('.rating-control').each(function (index, value) {
-            if (index != 0) {
-              json_questions_value += ',';
-            }
-            json_questions_value += '"' + $(this).children().attr('question') + '": "' + $('#rating_' + $(this).children().attr('data_value') + '').text() + '"';
-
-          });
-
-          json_general_value += json_questions_value + '} } ';
-
-          if ($('#azvNr').val() != '' && $('#dob').val() != '' && $('#azv_last_visit').val() != '')
-            validate_AZV_DOB($('#azvNr').val(), $('#dob').val(), json_general_value);
-          else
-            $("body").overhang({
-              type: "warn",
-              message: "Please! fill in all fields",
-              duration: 3,
-              overlay: true
-            });
-            $("#btn_rating").prop("disabled", false);
+        if ($('#azvNr').val() != '' && $('#dob').val() != '' && $('#azv_last_visit').val() != '') {
+          validate_AZV_DOB($('#azvNr').val(), $('#dob').val(), json_general_value);
         }
         else {
           $("body").overhang({
             type: "warn",
-            message: "Please! fill in all date fields",
+            message: "Please! fill in all fields",
             duration: 3,
             overlay: true
           });
+          loader(false);
           $("#btn_rating").prop("disabled", false);
         }
-      });
+
+      }
+      else {
+        $("body").overhang({
+          type: "warn",
+          message: "Please! fill in all date fields",
+          duration: 3,
+          overlay: true
+        });
+        loader(false);
+        $("#btn_rating").prop("disabled", false);
+      }
     });
 
     function azv_rating_list() {
@@ -663,6 +665,7 @@
         type: $method,
         url: $url,
         ContentType: "application/json",
+        async: true,
         headers: {
         },
         success: function (data) {
@@ -670,10 +673,6 @@
         },
         error: function (data) {
           rating_create_error(data);
-        },
-        complete: function (data) {
-          loader(false);
-          $("#btn_rating").prop("disabled", false);
         }
       });
     }
@@ -757,6 +756,7 @@
         });
       }
       loader(false);
+      $("#btn_rating").prop("disabled", false);
     }
 
     function responseMessage(msg) {
@@ -777,11 +777,10 @@
         url: $url,
         ContentType: "application/json",
         data: datastring,
+        async: true,
         headers: {
-          'Content-Type': 'application/json'
         },
         success: function (data) {
-
           if (data.statuscode == 201) {
             rating_create(json_value);
           }
@@ -802,13 +801,11 @@
               overlay: true
             });
           }
+          loader(false);
+          $("#btn_rating").prop("disabled", false);
         },
         error: function (data) {
           rating_create_error(data);
-        },
-        complete: function (data) {
-          loader(false);
-          $("#btn_rating").prop("disabled", false);
         }
       });
     }
@@ -831,10 +828,6 @@
         },
         error: function (data) {
           rating_create_error(data);
-        },
-        complete: function (data) {
-          loader(false);
-          $("#btn_rating").prop("disabled", false);
         }
       });
     }
@@ -851,12 +844,12 @@
         });
         setTimeout(function () {
           window.location.href = 'home.html';
-        }, 2500);
+        }, 3500);
       }
       else if (data.statuscode == 401) {
         $("body").overhang({
           type: "error",
-          message: "Ups. The AZV Nr. Or Date of birth is wrong or user not registered in AZV",
+          message: "Oeps! The AZV Nr. Or Date of birth is wrong or user not registered in AZV",
           duration: 3,
           overlay: true
         });
@@ -869,6 +862,8 @@
           overlay: true
         });
       }
+      loader(false);
+      $("#btn_rating").prop("disabled", false);
     }
 
     function rating_create_error(data) {
@@ -890,6 +885,12 @@
           overlay: true
         });
       }
+      loader(false);
+      $("#btn_rating").prop("disabled", false);
     }
 
   </script>
+
+</body>
+
+</html>

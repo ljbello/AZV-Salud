@@ -88,9 +88,8 @@
                 <textarea name="message" id="message" rows="9" class="form-control azv-textarea"></textarea>
               </div>
               <div>
-                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                  <span id="payment-button-amount">Submit</span>
-                  <span id="payment-button-sending" style="display:none;">Sending…</span>
+                <button id="contact-us-button" type="submit" class="btn btn-lg btn-info btn-block">
+                  <span id="contact-us-button-text">Submit</span>
                 </button>
               </div>
               <hr>
@@ -123,11 +122,11 @@
   <script src="js/overhang.min.js"></script>
   <script src="js/azv.js"></script>
 
-  <script>
+  <script type="text/javascript">
     $("#contact_us").submit(function (e) {
       e.preventDefault();
       loader(true);
-      $("#contact_us").prop("disabled", true);
+      $("#contact-us-button").prop("disabled", true);
 
       if ($('#first_name').val() != '' && $('#last_name').val() != '' && $('#phone_number').val() != '' && $('#email').val() != '' && $('#subject').val() != '' && $('#message').val() != '') {
 
@@ -143,6 +142,7 @@
           url: server + 'contact',
           data: datastring,
           ContentType: "application/json",
+          async: true,
           headers: {
           },
           success: function (data) {
@@ -157,7 +157,7 @@
             });
             setTimeout(function () {
               window.location.href = 'home.html';
-            }, 2500);
+            }, 3500);
           },
           error: function () {
             $("body").overhang({
@@ -166,10 +166,8 @@
               duration: 3,
               overlay: true
             });
-          },
-          complete: function (data) {
             loader(false);
-            $("#contact_us").prop("disabled", false);
+            $("#contact-us-button").prop("disabled", false);
           }
         });
       }
@@ -180,9 +178,10 @@
           duration: 3,
           overlay: true
         });
+        loader(false);
+        $("#contact-us-button").prop("disabled", false);
       }
-      loader(false);
-      $("#contact_us").prop("disabled", false);
+
     });
   </script>
 </body>
