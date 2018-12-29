@@ -123,7 +123,7 @@
   <script src="js/azv.js"></script>
 
   <script type="text/javascript">
-    $("#contact_us").submit(function (e) {
+     $("#contact_us").submit(function (e) {
       e.preventDefault();
       loader(true);
       $("#contact-us-button").prop("disabled", true);
@@ -141,7 +141,8 @@
           type: "POST",
           url: server + 'contact',
           data: datastring,
-          ContentType: "application/json",
+	dataType : "json",
+	contentType: "application/json; charset=utf-8",          
           async: true,
           headers: {
           },
@@ -181,7 +182,6 @@
         loader(false);
         $("#contact-us-button").prop("disabled", false);
       }
-
     });
   </script>
 </body>

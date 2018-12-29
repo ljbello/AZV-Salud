@@ -447,7 +447,8 @@
 
   <script type="text/javascript">
 
-    var test_data = "";
+
+var test_data = "";
     var total_controls = 1;
     var answer_selected = 0;
     var valid_dates = false;
@@ -775,7 +776,8 @@
 
         type: $method,
         url: $url,
-        ContentType: "application/json",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
         data: datastring,
         async: true,
         headers: {
