@@ -2,11 +2,7 @@
 //var server = 'http://app.infraruba.com:6969/api/'
 // var server = window.location.protocol + '//' + window.location.host + '/api/';
 
-var server = 'http://18.221.41.184/api/';
-
-
-
-
+var server = 'https://azvbackend.qwihi.com/api/';
 //Disable buttons for 3 seconds prevent dobleclick
 $(".button-disabled").click(function () {
 	var button_obj = $(this);
@@ -59,31 +55,7 @@ function convertUTCDateToLocalDate(date) {
 function shortDate(date) {
 	return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 }
-$.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (settings.type == 'POST' || settings.type == 'PUT' || settings.type == 'DELETE') {
-            function getCookie(name) {
-                var cookieValue = null;
-                if (document.cookie && document.cookie != '') {
-                    var cookies = document.cookie.split(';');
-                    for (var i = 0; i < cookies.length; i++) {
-                        var cookie = jQuery.trim(cookies[i]);
-                        // Does this cookie string begin with the name we want?
-                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
-                    }
-                }
-                return cookieValue;
-            }
-            if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                // Only send the token to relative URLs i.e. locally.
-                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-            }
-        }
-    }
-});
+
 function getCookie(name) {
 	var cookieValue = null;
 	if (document.cookie && document.cookie != '') {
@@ -100,9 +72,35 @@ function getCookie(name) {
 	return cookieValue;
 }
 
+// $.ajaxSetup({
+//     beforeSend: function(xhr, settings) {
+//         if (settings.type == 'POST' || settings.type == 'PUT' || settings.type == 'DELETE') {
+//             function getCookie(name) {
+//                 var cookieValue = null;
+//                 if (document.cookie && document.cookie != '') {
+//                     var cookies = document.cookie.split(';');
+//                     for (var i = 0; i < cookies.length; i++) {
+//                         var cookie = jQuery.trim(cookies[i]);
+//                         // Does this cookie string begin with the name we want?
+//                         if (cookie.substring(0, name.length + 1) == (name + '=')) {
+//                             cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+//                             break;
+//                         }
+//                     }
+//                 }
+//                 return cookieValue;
+//             }
+//             if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+//                 // Only send the token to relative URLs i.e. locally.
+//                 xhr.setRequestHeader("X-CSRFToken",  "dGh5anVraWxkb2Yuc0RNRkdKSVNvcGZnO2xlcmdramlhZXJwZ2FlO3JnbA==");
+//             }
+//         }
+//     }
+// });
+
 $.ajaxSetup({
 	beforeSend: function (xhr) {
-		xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+		xhr.setRequestHeader("X-CSRFToken",  "dGh5anVraWxkb2Yuc0RNRkdKSVNvcGZnO2xlcmdramlhZXJwZ2FlO3JnbA==");
 	}
 });
 
@@ -325,7 +323,7 @@ Utf8.decode = function(strUtf) {
   return strUni;
 } 
 
-if (!Cookies.get('csrftoken')) {
-	Cookies.set('csrftoken', Sha256.hash(String(new Date().getMilliseconds())), { expires: 1 });
-  }
+//if (!Cookies.get('csrftoken')) {
+//	Cookies.set('csrftoken', Sha256.hash(String(new Date().getMilliseconds())), { expires: 1 });
+//  }
 
