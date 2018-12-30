@@ -11,7 +11,7 @@
 
 
   <title>AZV</title>
-
+  <link rel="icon" href="img/ic_launcher.png" type="image/gif" sizes="16x16">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/azv.css" rel="stylesheet">
@@ -79,6 +79,7 @@
               <div class="col-xs-4">
                 <select class="form-control date" id="dob_day">
                   <option value="">DD</option>
+                  <option value="01">01</option>
                   <option value="02">02</option>
                   <option value="03">03</option>
                   <option value="04">04</option>
@@ -257,6 +258,7 @@
               <div class="col-xs-4">
                 <select class="form-control " id="azv_last_visit_day">
                   <option value="">DD</option>
+                  <option value="01">01</option>
                   <option value="02">02</option>
                   <option value="03">03</option>
                   <option value="04">04</option>
@@ -457,7 +459,7 @@ var test_data = "";
       type: 'GET',
       url: 'js/DefQuestionAZV.json',
       ContentType: "application/json",
-      async: true,
+      async: false,
       success: function (response) {
         test_data = response;
       }
