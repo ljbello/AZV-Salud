@@ -36,22 +36,35 @@
     <br>
 
     <nav class="navbar navbar-fixed-top navbar-top">
-      <div class="col-xs-2 col-md-1 text-center footer-margin-top">
-        <a class="navbar-brand" href="#">
-          <img src="img/azv_logo.jpeg" class="img-logo" alt="">
-        </a>
+
+      <div class="col-xs-4 col-md-4 text-center">
+        <div class="col-xs-6 col-md-1 footer-margin-top">
+          <a href="home.html"><i class=" glyphicon top-glyphicon-home azv-padding-home navbar-icon-first"></i></a>
+        </div>
+        <div class="col-xs-6 col-md-1 footer-margin-top">
+          <a href="rating.html"><i class="fa top-fa-star-half-o azv-padding navbar-icon "></i></a>
+        </div>
       </div>
-      <div class="col-xs-2 col-md-1 pull-left footer-margin-top">
-        <a href="home.html"><i class=" glyphicon top-glyphicon-home azv-padding-home navbar-icon-first"></i></a>
+
+
+      <div class="col-xs-4 col-md-4 text-center">
+        <div class=" logo-center footer-margin-top ">
+          <a class="navbar-brand" href="#">
+            <img src="img/azv_logo.jpeg" class="img-logo" alt="">
+          </a>
+        </div>
       </div>
-      <div class="col-xs-4 col-md-4 pull-left footer-margin-top">
-        <a href="rating.html"><i class="fa top-fa-star-half-o azv-padding navbar-icon "></i></a>
-      </div>
-      <div class="col-xs-3 col-md-6 footer-margin-top pull-right">
-        <a href="contact.html" class="pull-right"><i class="fa page-fa-address-card margin-page"></i><b class="navbar-page">
-            Contact<b></a>
+
+
+      <div class="col-xs-4 col-md-4">
+        <div class="col-xs-3 col-md-3 footer-margin-top pull-right">
+          <a href="contact.html" class="pull-right"><i class="fa page-fa-address-card margin-page"></i></a>
+        </div>
       </div>
     </nav>
+    <br>
+
+
     <div class="row-fluid top">
       <div class="col-md-6 col-md-offset-3">
         <div class="card azv-card">
@@ -68,7 +81,7 @@
                   aria-invalid="false">
               </div>
               <div class="form-group">
-                <label for="">Numnber di Telefoon:</label>
+                <label for="">Number di telefon:</label>
                 <input id="phone_number" name="phone_number" type="number" class="form-control" data-val="true"
                   aria-required="true" placeholder="+297-###-##-##" aria-invalid="false">
               </div>
@@ -79,13 +92,13 @@
                 <span class="help-block field-validation-valid" data-valmsg-for="subject" data-valmsg-replace="true"></span>
               </div>
               <div class="form-group">
-                <label for="">Tema di Mensahe:</label>
+                <label for="">Tema di mensahe:</label>
                 <input id="subject" name="subject" type="text" class="form-control" data-val="true" data-val-required="Please enter the name on card"
                   autocomplete="subject" aria-required="true" aria-invalid="false" aria-describedby="subject-error">
                 <span class="help-block field-validation-valid" data-valmsg-for="subject" data-valmsg-replace="true"></span>
               </div>
               <div class="form-group">
-                <label for="message">Pregunta of Comentario:</label>
+                <label for="message">Pregunta of comentario:</label>
                 <textarea name="message" id="message" rows="9" class="form-control azv-textarea"></textarea>
               </div>
               <div>
@@ -102,26 +115,34 @@
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-fixed-bottom navbar-bottom">
+    <!-- <nav class="navbar navbar-fixed-bottom navbar-bottom">
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
         <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
-      </div>
-      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
-        <a href="rating.html"><i class="fa bottom-fa-star-half-o"></i></a>
-      </div>
-      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
-        <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
-      </div>
-    </nav>
-    <nav class="navbar navbar-fixed-bottom navbar-bottom">
-      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
-        <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
+        <p class="text-center">&nbspHome</p>
+
       </div>
       <div class="col-xs-4 col-md-4 text-center">
         <a href="contact.html"><i class="fa center-fa-address-card"></i></a>
+        <p class="text-center">&nbsContact</p>
       </div>
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
         <a href="rating.html"><i class="fa bottom-fa-star-half-o"></i></a>
+        <p class="text-center">&nbspRating</p>
+
+      </div>
+    </nav> -->
+    <nav class="navbar navbar-fixed-bottom navbar-bottom">
+      <div class="col-xs-4 col-md-4 text-center bottom-navbar-msg">
+        <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
+        <p class="text-center"><b>&nbspHome</b></p>
+      </div>
+      <div class="col-xs-4 col-md-4 text-center">
+        <a href="contact.html"><i class="fa center-fa-address-card"></i></a>
+        <p class="text-center"><b>Contact</b></p>
+      </div>
+      <div class="col-xs-4 col-md-4 text-center bottom-navbar-msg">
+        <a href="rating.html"><i class="fa bottom-fa-star-half-o"></i></a>
+        <p class="text-center"><b>Rating</b></p>
       </div>
     </nav>
     <div class="loader hidden"></div>
@@ -135,7 +156,7 @@
   <script src="js/azv.js"></script>
 
   <script type="text/javascript">
-     $("#contact_us").submit(function (e) {
+    $("#contact_us").submit(function (e) {
       e.preventDefault();
       loader(true);
       $("#contact-us-button").prop("disabled", true);
@@ -153,8 +174,8 @@
           type: "POST",
           url: server + 'contact',
           data: datastring,
-	dataType : "json",
-	contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
           async: true,
           headers: {
           },

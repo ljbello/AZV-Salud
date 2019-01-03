@@ -1023,7 +1023,7 @@ readers do not read off random characters that represent icons */
 .center-fa-star-half-full:before,
 .center-fa-star-half-o:before {
   content: "\f123";
-  font-size: 50px;
+  font-size: 45px;
   color:#009EC5 !important;
 }
 
@@ -2287,7 +2287,7 @@ readers do not read off random characters that represent icons */
 .center-fa-vcard:before,
 .center-fa-address-card:before {
   content: "\f2bb";
-  font-size: 50px;
+  font-size: 45px;
   color:#009EC5 !important;
 }
 

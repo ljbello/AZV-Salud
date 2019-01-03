@@ -23,7 +23,7 @@
 
 <body>
 
-  <nav class="navbar navbar-fixed-top navbar-top">
+  <!-- <nav class="navbar navbar-fixed-top navbar-top">
     <div class="col-xs-2 col-md-1 text-center footer-margin-top">
       <a class="navbar-brand" href="#">
         <img src="img/azv_logo.jpeg" class="img-logo" alt="">
@@ -39,6 +39,35 @@
       <a href="rating.html" class="pull-right"><i class="fa page-fa-star-half-o margin-page"></i><b class="navbar-page">Rating<b></a>
     </div>
   </nav>
+  <br> -->
+  <nav class="navbar navbar-fixed-top navbar-top">
+
+      <div class="col-xs-4 col-md-4 text-center">
+          <div class="col-xs-6 col-md-1 footer-margin-top">
+            <a href="home.html"><i class=" glyphicon top-glyphicon-home azv-padding-home navbar-icon-first"></i></a>
+          </div>
+          <div class="col-xs-6 col-md-1 footer-margin-top">
+            <a href="contact.html"><i class="fa top-fa-address-card azv-padding navbar-icon"></i></a>
+          </div>
+        </div>
+  
+
+    <div class="col-xs-4 col-md-4 text-center">
+      <div class=" logo-center footer-margin-top ">
+        <a class="navbar-brand" href="#">
+          <img src="img/azv_logo.jpeg" class="img-logo" alt="">
+        </a>
+      </div>
+    </div>
+
+
+    <div class="col-xs-4 col-md-4">
+      <div class="col-xs-3 col-md-3 footer-margin-top pull-right">
+        <a href="rating.html" class="pull-right"><i class="fa page-fa-star-half-o margin-page"></i></a>
+      </div>
+    </div>
+  </nav>
+  <br>
   <br>
   <div class="container-fluid">
     <div class="row-fluid top">
@@ -58,7 +87,7 @@
             <br><br><br><br><br>
             <div class="form-group">
               <input class="hidden" id="dob" name="dob" value="" />
-              <label class="control-label col-xs-12 align-left">Fecha di naciemento</label>
+              <label class="control-label col-xs-12 align-left">Fecha di nacemento</label>
               <div class="col-xs-4">
                 <select class="form-control date" id="dob_month">
                   <option value="">MM</option>
@@ -237,7 +266,7 @@
             <hr class='azv-hr'>
             <div class="form-group">
               <input class="hidden" id="azv_last_visit" name="azv_last_visit" value="" />
-              <label class="control-label col-xs-12 align-left">Fecha ultimo Bishita na dokter di cas:</label>
+              <label class="control-label col-xs-12 align-left">Fecha ultimo bishita na dokter di cas</label>
               <div class="col-xs-4">
                 <select class="form-control date" id="azv_last_visit_month">
                   <option value="">MM</option>
@@ -417,7 +446,7 @@
           <br><br>
         </div>
         <div id="questions"></div>
-        <button type="button" class="btn btn-lg btn-block btn-info">Rating Done</button>
+        <button type="button" class="btn btn-lg btn-block btn-info">Submit Rating</button>
         <hr>
         <br>
         <br>
@@ -427,12 +456,15 @@
     <nav class="navbar navbar-fixed-bottom navbar-bottom">
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
         <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
+        <p class="text-center"><b>&nbspHome</b></p>
       </div>
       <div class="col-xs-4 col-md-4 text-center">
         <a href="rating.html"><i class="fa center-fa-star-half-o"></i></a>
+        <p class="text-center"><b>Rating</b></p>
       </div>
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
         <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
+        <p class="text-center"><b>Contact</b></p>
       </div>
     </nav>
     <div class="loader hidden"></div>
@@ -448,7 +480,7 @@
   <script type="text/javascript">
 
 
-var test_data = "";
+    var test_data = "";
     var total_controls = 1;
     var answer_selected = 0;
     var valid_dates = false;
