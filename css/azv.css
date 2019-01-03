@@ -89,6 +89,7 @@ body {
 
 .navbar-bottom{
   background-color: #fff!important;
+  
 }
 
 .navbar-top{
@@ -412,13 +413,14 @@ hr{
 }
 .bottom-navbar-msg{  
   border-top-width: 0px;
-  margin-top: 7px;
+  /* margin-top: 7px; */
 
 }
 
 .navbar-fixed-top {
   top: 0;
   border-width: 0 25px 1px;
+  border-bottom-width: 30px !important;
 }
 
 .logo-center{
