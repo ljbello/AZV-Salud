@@ -1019,6 +1019,14 @@ readers do not read off random characters that represent icons */
   color:#6EAF22!important;
 }
 
+.center-fa-star-half-empty:before,
+.center-fa-star-half-full:before,
+.center-fa-star-half-o:before {
+  content: "\f123";
+  font-size: 50px;
+  color:#009EC5 !important;
+}
+
 .page-fa-star-half-empty:before,
 .page-fa-star-half-full:before,
 .page-fa-star-half-o:before {
@@ -2275,6 +2283,14 @@ readers do not read off random characters that represent icons */
   font-size: 35px;
   color:#6EAF22!important;
 }
+
+.center-fa-vcard:before,
+.center-fa-address-card:before {
+  content: "\f2bb";
+  font-size: 50px;
+  color:#009EC5 !important;
+}
+
 .page-fa-vcard:before,
 .page-fa-address-card:before {
   content: "\f2bb";

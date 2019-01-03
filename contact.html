@@ -113,6 +113,17 @@
         <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
       </div>
     </nav>
+    <nav class="navbar navbar-fixed-bottom navbar-bottom">
+      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
+        <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
+      </div>
+      <div class="col-xs-4 col-md-4 text-center">
+        <a href="contact.html"><i class="fa center-fa-address-card"></i></a>
+      </div>
+      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
+        <a href="rating.html"><i class="fa bottom-fa-star-half-o"></i></a>
+      </div>
+    </nav>
     <div class="loader hidden"></div>
   </div>
   <script src="js/jquery-3.2.1.min.js"></script>
@@ -143,7 +154,7 @@
           url: server + 'contact',
           data: datastring,
 	dataType : "json",
-	contentType: "application/json; charset=utf-8",          
+	contentType: "application/json; charset=utf-8",
           async: true,
           headers: {
           },

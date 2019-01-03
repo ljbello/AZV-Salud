@@ -380,6 +380,13 @@ th {
   color:#6EAF22!important;
 }
 
+.center-glyphicon-home:before {
+  content: "\e021";
+  font-size: 45px;
+  color:#009EC5 !important;
+}
+
+
 .page-glyphicon-home:before {
   content: "\e021";
   font-size: 25px;
@@ -3078,6 +3085,8 @@ fieldset[disabled] .btn {
   -webkit-box-shadow: none;
   box-shadow: none;
   opacity: .65;
+  background-color: #a9a9a9 !important;
+  color: white;
 }
 a.btn.disabled,
 fieldset[disabled] a.btn {
