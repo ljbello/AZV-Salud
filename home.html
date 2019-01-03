@@ -91,10 +91,10 @@
     </div>
     <nav class="navbar navbar-fixed-bottom navbar-bottom">
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
-        <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
-      </div>
-      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
         <a href="rating.html"><i class="fa bottom-fa-star-half-o"></i></a>
+      </div>
+      <div class="col-xs-4 col-md-4 text-center">
+        <a href="home.html"><i class="glyphicon center-glyphicon-home"></i></a>
       </div>
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
         <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
@@ -152,7 +152,7 @@
       function azv_salud_doctor_list_ok(data) {
         loader(true);
         data = jQuery.parseJSON(data);
-        
+
         var dr = '';
         var botica = '';
         var dentist = '';
