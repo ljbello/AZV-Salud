@@ -429,3 +429,10 @@ hr{
 .fa-blue: before{
 color: #009EC5!important;
 }
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
