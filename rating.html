@@ -8,8 +8,6 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
-
-
   <title>AZV</title>
   <link rel="icon" href="img/ic_launcher.png" type="image/gif" sizes="16x16">
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,35 +18,38 @@
   <link href="css/jquery-ui.min.css" rel="stylesheet">
   <link href="css/overhang.min.css" rel="stylesheet">
 </head>
-
 <body>
-
   <nav class="navbar navbar-fixed-top navbar-top">
-    <div class="col-xs-2 col-md-1 text-center footer-margin-top">
-      <a class="navbar-brand" href="#">
-        <img src="img/azv_logo.jpeg" class="img-logo" alt="">
-      </a>
+    <div class="col-xs-4 col-md-4 text-center">
+      <div class="col-xs-6 col-md-1 footer-margin-top">
+        <a href="home.html"><i class=" glyphicon top-glyphicon-home azv-padding-home navbar-icon-first"></i></a>
+      </div>
+      <div class="col-xs-6 col-md-1 footer-margin-top">
+        <a href="contact.html"><i class="fa top-fa-address-card azv-padding navbar-icon"></i></a>
+      </div>
     </div>
-    <div class="col-xs-2 col-md-1 pull-left footer-margin-top">
-      <a href="contact.html"><i class="fa top-fa-address-card azv-padding navbar-icon-first"></i></a>
+    <div class="col-xs-4 col-md-4 text-center">
+      <div class=" logo-center footer-margin-top ">
+        <a class="navbar-brand" href="#">
+          <img src="img/azv_logo.jpeg" class="img-logo" alt="">
+        </a>
+      </div>
     </div>
-    <div class="col-xs-4 col-md-4 pull-left footer-margin-top ">
-      <a href="home.html"><i class="glyphicon top-glyphicon-home azv-padding-home navbar-icon"></i></a>
-    </div>
-    <div class="col-xs-3 col-md-6 footer-margin-top pull-right">
-      <a href="rating.html" class="pull-right"><i class="fa page-fa-star-half-o margin-page"></i><b class="navbar-page">Rating<b></a>
+    <div class="col-xs-4 col-md-4 pull-right">
+      <div class="col-xs-3 col-md-3 footer-margin-top pull-right"  style="padding-right: 1px;">
+        <a href="rating.html" class="pull-right"><i class="fa page-fa-star-half-o margin-page"></i></a>
+      </div>
     </div>
   </nav>
+  <br>
   <br>
   <div class="container-fluid">
     <div class="row-fluid top">
       <div class="col-md-6 col-md-offset-3">
         <div class="card azv-card">
           <div class="card-body">
-
             <h5 class='azv-blue'><b>Informacion di usuario</b></h5>
             <hr class='azv-hr'>
-
             <div class="form-group">
               <label class="control-label col-xs-6 align-left">AZV Nr.</label>
               <div class="col-xs-12">
@@ -58,7 +59,7 @@
             <br><br><br><br><br>
             <div class="form-group">
               <input class="hidden" id="dob" name="dob" value="" />
-              <label class="control-label col-xs-12 align-left">Fecha di naciemento</label>
+              <label class="control-label col-xs-12 align-left">Fecha di nacemento</label>
               <div class="col-xs-4">
                 <select class="form-control date" id="dob_month">
                   <option value="">MM</option>
@@ -237,7 +238,7 @@
             <hr class='azv-hr'>
             <div class="form-group">
               <input class="hidden" id="azv_last_visit" name="azv_last_visit" value="" />
-              <label class="control-label col-xs-12 align-left">Fecha ultimo Bishita na dokter di cas:</label>
+              <label class="control-label col-xs-12 align-left">Fecha ultimo bishita na dokter di cas</label>
               <div class="col-xs-4">
                 <select class="form-control date" id="azv_last_visit_month">
                   <option value="">MM</option>
@@ -418,8 +419,8 @@
         </div>
         <div id="questions"></div>
         <button id="btn_rating" type="button" class="btn btn-lg btn-info btn-block" disabled>
-          <span>Rating Done</span>
-        </button>
+            <span>Submit Rating</span>
+          </button>
         <hr>
         <br>
         <br>
@@ -429,12 +430,15 @@
     <nav class="navbar navbar-fixed-bottom navbar-bottom">
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
         <a href="home.html"><i class="glyphicon bottom-glyphicon-home"></i></a>
+        <p class="text-center"><b>&nbspHome</b></p>
       </div>
-      <div class="col-xs-4 col-md-4 text-center footer-margin-top">
-        <a href="rating.html"><i class="fa bottom-fa-star-half-o"></i></a>
+      <div class="col-xs-4 col-md-4 text-center footer-margin-top" style="bottom: 5px;">
+        <a href="rating.html"><i class="fa bottom-fa-star-half-o-blue "></i></a>
+        <p class="text-center"><b>Rating</b></p>
       </div>
       <div class="col-xs-4 col-md-4 text-center footer-margin-top">
         <a href="contact.html"><i class="fa bottom-fa-address-card"></i></a>
+        <p class="text-center"><b>Contact</b></p>
       </div>
     </nav>
     <div class="loader hidden"></div>
@@ -446,11 +450,10 @@
   <script src="js/jquery-ui.min.js"></script>
   <script src="js/overhang.min.js"></script>
   <script src="js/azv.js"></script>
-
+  
   <script type="text/javascript">
 
-
-var test_data = "";
+    var test_data = "";
     var total_controls = 1;
     var answer_selected = 0;
     var valid_dates = false;
@@ -759,7 +762,6 @@ var test_data = "";
         });
       }
       loader(false);
-      $("#btn_rating").prop("disabled", false);
     }
 
     function responseMessage(msg) {

@@ -73,24 +73,23 @@ body {
   margin-top: 10px;
 }
 .img-logo {
-  margin-left: -20px;
-  margin-right: 25px;
+  display: block;
   margin-top:-15px;
-  height: 7vh;
-  width: 7vh;
+  height: 4em;
+  width: 4m;
 }
 
 @media (max-width: 700px) {
   .home-img { margin-right: -27px; }
 }
 
-
 .text-center{
-  align:center;
+  text-align:center;
 }
 
 .navbar-bottom{
   background-color: #fff!important;
+  
 }
 
 .navbar-top{
@@ -146,8 +145,6 @@ body {
 .clearfix {
   clear:both;
 }
-
-.text-center {text-align:center;}
 
 a {
   color: tomato;
@@ -249,24 +246,18 @@ pre {
   webkit-font-smoothing: antialiased;
   color: #919191;
   margin-left: 5px;
-
-
 }
-
-
 .margin-page{
   margin-left: -35px;
   margin-top: 8px;
 }
 
 .azv-padding{
-  margin-top: 10px
-
+  margin-top: 10px;
 }
 
 .azv-padding-home{
-  margin-top: 8px;
-
+  margin-top: 7px;
 }
 
 .datepicker {
@@ -274,7 +265,7 @@ pre {
 }
 
 .navbar-icon{
-  margin-left: -35px;
+  margin-left: -25px;
 }
 
 .navbar-icon-first{
@@ -417,4 +408,31 @@ hr{
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+.bottom-navbar-msg{  
+  border-top-width: 0px;
+  /* margin-top: 7px; */
+
+}
+
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 25px 1px;
+  border-bottom-width: 30px !important;
+}
+
+.logo-center{
+  display: flex;
+  justify-content: center;
+}
+.page-fa-address-card:before,
+.fa-blue: before{
+color: #009EC5!important;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }

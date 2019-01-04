@@ -380,6 +380,20 @@ th {
   color:#6EAF22!important;
 }
 
+.bottom-glyphicon-home-blue:before {
+  content: "\e021";
+  font-size: 30px;
+  color:#009EC5!important;
+}
+
+
+.center-glyphicon-home:before {
+  content: "\e021";
+  font-size: 40px;
+  color:#009EC5 !important;
+}
+
+
 .page-glyphicon-home:before {
   content: "\e021";
   font-size: 25px;
