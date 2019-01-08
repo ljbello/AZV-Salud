@@ -38,7 +38,10 @@ body {
 
   background-color:#6EAF22!important;
 }
+.background-green-top{
 
+  background-color:#8cc63f!important;
+}
 
 .white{
   color:white;
@@ -435,4 +438,7 @@ button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+.azv-telf{
+  color: #919191;
 }
