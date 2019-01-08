@@ -9,6 +9,9 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta http-equiv=“Pragma” content=”no-cache”>
+  <meta http-equiv=“Expires” content=”-1″>
+  <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
   <title>AZV</title>
   <link rel="icon" href="img_v2_1/ic_launcher.png" type="image/gif" sizes="16x16">
   <link href="css_v2_1/bootstrap.min.css" rel="stylesheet">
@@ -794,7 +797,7 @@
           else if (data.statuscode == 401) {
             $("body").overhang({
               type: "error",
-              message: "Oops! The AZV number of Date of birth are wrong, or user is not registered at AZV.",
+              message: "Oops! The AZV number or date of birth are wrong, or user is not registered at AZV.",
               duration: 3,
               overlay: true
             });
@@ -803,7 +806,7 @@
           else {
             $("body").overhang({
               type: "error",
-              message: "Oeps! We have an error in the system, please try again in a few moments",
+              message: "Oops! We have an error in the system, please try again in a few moments.",
               duration: 3,
               overlay: true
             });
@@ -856,7 +859,7 @@
       else if (data.statuscode == 401) {
         $("body").overhang({
           type: "error",
-          message: "Oops! The AZV number of Date of birth are wrong, or user is not registered at AZV.",
+          message: "Oops! The AZV number or date of birth are wrong, or user is not registered at AZV.",
           duration: 3,
           overlay: true
         });
@@ -878,7 +881,7 @@
       if (data.status == 401) {
         $("body").overhang({
           type: "error",
-          message: "Oeps. The AZV Nr. Or Date of birth is wrong or user not registered in AZV",
+          message: "Oops! The AZV number or date of birth are wrong, or user is not registered at AZV.",
           duration: 3,
           overlay: true
         });

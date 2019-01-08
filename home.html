@@ -9,6 +9,9 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta http-equiv=“Pragma” content=”no-cache”>
+  <meta http-equiv=“Expires” content=”-1″>
+  <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
 
 
   <title>AZV</title>
@@ -73,7 +76,9 @@
                   <p class="location-name"></p>
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3 home-text-right">
-                  <a  class="azv-telf" href="tel:+295279900"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;5279900</a>
+                  <!-- <a  class="azv-telf" href="tel:+295279900"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;5279900</a> -->
+                  <p><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;5279900</p>
+
                 </div>
               </div>
               <hr class="azv-hr">
@@ -202,7 +207,7 @@
       function azv_salud_doctor_list_ok(data) {
         loader(true);
         data = jQuery.parseJSON(data);
-        
+
         var dr = '';
         var botica = '';
         var dentist = '';
@@ -221,7 +226,7 @@
               dr += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.city + '</p></div>';
               dr += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
               // dr += '<a  class="azv-telf"href="tel:+29' + item.phonenumber + '"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</a>';
-              dr += '<p  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
+              dr += '<p>  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
 
               dr += '</div>';
               dr += '</div>';
@@ -239,7 +244,7 @@
               botica += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.city + '</p></div>';
               botica += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
               // botica += '<a  class="azv-telf"href="tel:+29' + item.phonenumber + '"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</a>';
-              botica += '<p  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
+              botica += '<p>  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
               botica += '</div>';
               botica += '</div>';
               if (i != (data_length - 1)) {
@@ -256,7 +261,7 @@
               dentist += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.city + '</p></div>';
               dentist += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
               // dentist += '<a  class="azv-telf"href="tel:+29' + item.phonenumber + '"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</a>';
-              dentist += '<p  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
+              dentist += '<p>  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
               dentist += '</div>';
               dentist += '</div>';
               if (i != (data_length - 1)) {
