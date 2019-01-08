@@ -4,19 +4,20 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
   <title>AZV</title>
   <link rel="icon" href="img/ic_launcher.png" type="image/gif" sizes="16x16">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="css/azv.css" rel="stylesheet">
-  <link href="css/font-awesome.css" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/jquery-ui.min.css" rel="stylesheet">
-  <link href="css/overhang.min.css" rel="stylesheet">
+  <link href="css_v1/bootstrap.min.css" rel="stylesheet">
+  <link href="css_v1/bootstrap.css" rel="stylesheet">
+  <link href="css_v1/azv.css" rel="stylesheet">
+  <link href="css_v1/font-awesome.css" rel="stylesheet">
+  <link href="css_v1/font-awesome.min.css" rel="stylesheet">
+  <link href="css_v1/jquery-ui.min.css" rel="stylesheet">
+  <link href="css_v1/overhang.min.css" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar navbar-fixed-top navbar-top">
@@ -31,7 +32,7 @@
     <div class="col-xs-4 col-md-4 text-center">
       <div class=" logo-center footer-margin-top ">
         <a class="navbar-brand" href="#">
-          <img src="img/azv_logo.jpeg" class="img-logo" alt="">
+          <img src="img_v1/azv_logo.jpeg" class="img-logo" alt="">
         </a>
       </div>
     </div>
@@ -443,13 +444,13 @@
     </nav>
     <div class="loader hidden"></div>
   </div> <!-- /container -->
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/js.cookie.js"></script>
-  <script src="js/overhang.min.js"></script>
-  <script src="js/jquery-ui.min.js"></script>
-  <script src="js/overhang.min.js"></script>
-  <script src="js/azv.js"></script>
+  <script src="js_v1/jquery-3.2.1.min.js"></script>
+  <script src="js_v1/bootstrap.min.js"></script>
+  <script src="js_v1/js.cookie.js"></script>
+  <script src="js_v1/overhang.min.js"></script>
+  <script src="js_v1/jquery-ui.min.js"></script>
+  <script src="js_v1/overhang.min.js"></script>
+  <script src="js_v1/azv.js"></script>
   
   <script type="text/javascript">
 
@@ -642,7 +643,7 @@
         else {
           $("body").overhang({
             type: "warn",
-            message: "Please! fill in all fields",
+            message: "Please, fill all fields!",
             duration: 3,
             overlay: true
           });
@@ -793,7 +794,7 @@
           else if (data.statuscode == 401) {
             $("body").overhang({
               type: "error",
-              message: "Ups. The AZV Nr. Or Date of birth is wrong or user not registered in AZV",
+              message: "Oops! The AZV number of Date of birth are wrong, or user is not registered at AZV.",
               duration: 3,
               overlay: true
             });
@@ -842,7 +843,7 @@
       if (data.statuscode == 201) {
         $("body").overhang({
           type: "success",
-          message: "Thanks! Rating created successfully.",
+          message: "Thanks! Rating successfully submitted.",
           duration: 3,
           primary: "#6EAF22",
           accent: "#3a5d12",
@@ -855,7 +856,7 @@
       else if (data.statuscode == 401) {
         $("body").overhang({
           type: "error",
-          message: "Oeps! The AZV Nr. Or Date of birth is wrong or user not registered in AZV",
+          message: "Oops! The AZV number of Date of birth are wrong, or user is not registered at AZV.",
           duration: 3,
           overlay: true
         });
@@ -863,7 +864,7 @@
       else {
         $("body").overhang({
           type: "error",
-          message: "Oeps! We have an error in the system, please try again in a few moments",
+          message: "Oops! We have an error in the system, please try again in a few moments.",
           duration: 3,
           overlay: true
         });
@@ -886,7 +887,7 @@
       else {
         $("body").overhang({
           type: "error",
-          message: "Oeps! We have an error in the system, please try again in a few moments",
+          message: "Oops! We have an error in the system, please try again in a few moments.",
           duration: 3,
           overlay: true
         });
