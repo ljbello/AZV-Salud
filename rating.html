@@ -517,8 +517,6 @@
     }
 
     function azv_rating_list_ok(data) {
-
-      // data = jQuery.parseJSON(data);
       var html_questions = '';
 
       var data_length = data.length;
@@ -673,17 +671,6 @@
 
     function rating_create_ok(data) {
       if (data.statuscode == 201) {
-        // $("body").overhang({
-        //   type: "success",
-        //   message: "Thanks! Rating successfully submitted.",
-        //   duration: 3,
-        //   primary: "#6EAF22",
-        //   accent: "#3a5d12",
-        //   overlay: true
-        // });
-        // setTimeout(function () {
-        //   window.location.href = 'home.html';
-        // }, 3500);
 
         $('#confirm_modal').click();
       }
