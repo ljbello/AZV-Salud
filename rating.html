@@ -13,14 +13,14 @@
   <meta http-equiv=“Expires” content=”-1″>
   <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”> -->
   <title>AZV</title>
-  <link rel="icon" href="img_v2_2/ic_launcher.png" type="image/gif" sizes="16x16">
-  <link href="css_v2_2/bootstrap.min.css" rel="stylesheet">
-  <link href="css_v2_2/bootstrap.css" rel="stylesheet">
-  <link href="css_v2_2/azv.css" rel="stylesheet">
-  <link href="css_v2_2/font-awesome.css" rel="stylesheet">
-  <link href="css_v2_2/font-awesome.min.css" rel="stylesheet">
-  <link href="css_v2_2/jquery-ui.min.css" rel="stylesheet">
-  <link href="css_v2_2/overhang.min.css" rel="stylesheet">
+  <link rel="icon" href="img/ic_launcher.png" type="image/gif" sizes="16x16">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/azv.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/jquery-ui.min.css" rel="stylesheet">
+  <link href="css/overhang.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
     <div class="col-xs-4 col-md-4 text-center">
       <div class=" logo-center footer-margin-top ">
         <a class="navbar-brand" href="#">
-          <img src="img_v2_2/azv_logo.jpeg" class="img-logo" alt="">
+          <img src="img/azv_logo.jpeg" class="img-logo" alt="">
         </a>
       </div>
     </div>
@@ -328,11 +328,15 @@
               <div class="modal-body" id="modal_question">
 
                 <i class="fa fa-check faa-check animated fa-4x"></i>
+                <br>
+                <hr>
                 <p>Do you want to save your AZV number and your date of birth?</p>
 
               </div>
               <div class="modal-body hidden" id="modal_save_data">
                 <i class='fa fa-thumbs-up faa-check animated fa-4x'></i>
+                <br>
+                <hr>
                 <p>Great!</p>
 
               </div>
@@ -375,13 +379,13 @@
 
     <div class="loader hidden"></div>
   </div> <!-- /container -->
-  <script src="js_v2_2/jquery-3.2.1.min.js"></script>
-  <script src="js_v2_2/bootstrap.min.js"></script>
-  <script src="js_v2_2/js.cookie.js"></script>
-  <script src="js_v2_2/overhang.min.js"></script>
-  <script src="js_v2_2/jquery-ui.min.js"></script>
-  <script src="js_v2_2/overhang.min.js"></script>
-  <script src="js_v2_2/azv.js"></script>
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/js.cookie.js"></script>
+  <script src="js/overhang.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/overhang.min.js"></script>
+  <script src="js/azv.js"></script>
 
   <script type="text/javascript">
 
@@ -390,20 +394,9 @@
     var answer_selected = 0;
     var valid_dates = false;
 
-    // $.ajax({
-    //   type: 'GET',
-    //   url: 'js_v2_2/DefQuestionAZV.json',
-    //   ContentType: "application/json",
-    //   async: false,
-    //   success: function (response) {
-    //     test_data = response;
-    //   }
-    // });
-
     azv_rating_list();
 
     $(document).ready(function () {
-      // loader(true);
 
       if (localStorage.getItem("azvNr")) {
         $('#azvNr').val(localStorage.getItem("azvNr"));
@@ -414,10 +407,7 @@
         $('#dob_year').val(localStorage.getItem("dob_year"));
       }
 
-      // azv_rating_list_ok(test_data);
-      // azv_rating_list();
-
- });
+    });
 
     $('#btn_rating').click(function (e) {
       e.preventDefault();
@@ -449,11 +439,28 @@
 
         if ($('#azvNr').val() != '' && $('#dob').val() != '' && $('#azv_last_visit').val() != '') {
 
-          var GivenDate = $('#azv_last_visit').val();
-          var CurrentDate = new Date();
-          GivenDate = new Date(GivenDate);
 
-          if (GivenDate > CurrentDate) {
+          if (isValidDate($('#dob').val()) && isValidDate($('#azv_last_visit').val())) {
+
+            var GivenDate = $('#azv_last_visit').val();
+            var CurrentDate = new Date();
+            GivenDate = new Date(GivenDate);
+
+            if (GivenDate < CurrentDate) {
+              validate_AZV_DOB($('#azvNr').val(), $('#dob').val(), json_general_value);
+            }
+            else {
+              $("body").overhang({
+                type: "warn",
+                message: "Please, select a valid date...",
+                duration: 3,
+                overlay: true
+              });
+              loader(false);
+              $("#btn_rating").prop("disabled", false);
+            }
+          }
+          else {
             $("body").overhang({
               type: "warn",
               message: "Please, select a valid date...",
@@ -462,9 +469,7 @@
             });
             loader(false);
             $("#btn_rating").prop("disabled", false);
-          }
-          else {
-            validate_AZV_DOB($('#azvNr').val(), $('#dob').val(), json_general_value);
+
           }
         }
         else {
@@ -738,68 +743,86 @@
       }, 3500);
     });
 
-      /* 1. Visualizing things on Hover - See next part for action on click */
-      $('#stars li').on('mouseover', function () {
-        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+    /* 1. Visualizing things on Hover - See next part for action on click */
+    $('#stars li').on('mouseover', function () {
+      var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
 
-        // Now highlight all the stars that's not after the current hovered star
-        $(this).parent().children('li.star').each(function (e) {
-          if (e < onStar) {
-            $(this).addClass('hover');
-          }
-          else {
-            $(this).removeClass('hover');
-          }
-        });
-
-      }).on('mouseout', function () {
-        $(this).parent().children('li.star').each(function (e) {
-          $(this).removeClass('hover');
-        });
-      });
-
-      /* 2. Action to perform on click */
-      $('#stars li').on('click', function () {
-
-        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
-        var stars = $(this).parent().children('li.star');
-
-        for (i = 0; i < stars.length; i++) {
-          $(stars[i]).removeClass('selected');
-        }
-
-        for (i = 0; i < onStar; i++) {
-          $(stars[i]).addClass('selected');
-        }
-
-        // JUST RESPONSE (Not needed)
-        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-        var msg = "";
-        if (ratingValue > 1) {
-          msg = "Thanks! You rated this " + ratingValue + " stars.";
+      // Now highlight all the stars that's not after the current hovered star
+      $(this).parent().children('li.star').each(function (e) {
+        if (e < onStar) {
+          $(this).addClass('hover');
         }
         else {
-          msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+          $(this).removeClass('hover');
         }
-        responseMessage(msg);
-
-        $('#' + $(this).attr('lnk') + '').text($(this).attr('Title'));
-
-        if ($(this).parent().attr('data_value') == '') {
-          answer_selected++;
-        }
-
-        $(this).parent().attr('data_value', onStar);
-
-        if (answer_selected >= total_controls) {
-          if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
-            $("#btn_rating").prop("disabled", false);
-          }
-        }
-
       });
 
-      $('input[control="opt_radio"]').change(function () {
+    }).on('mouseout', function () {
+      $(this).parent().children('li.star').each(function (e) {
+        $(this).removeClass('hover');
+      });
+    });
+
+    /* 2. Action to perform on click */
+    $('#stars li').on('click', function () {
+
+      var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+      var stars = $(this).parent().children('li.star');
+
+      for (i = 0; i < stars.length; i++) {
+        $(stars[i]).removeClass('selected');
+      }
+
+      for (i = 0; i < onStar; i++) {
+        $(stars[i]).addClass('selected');
+      }
+
+      // JUST RESPONSE (Not needed)
+      var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+      var msg = "";
+      if (ratingValue > 1) {
+        msg = "Thanks! You rated this " + ratingValue + " stars.";
+      }
+      else {
+        msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+      }
+      responseMessage(msg);
+
+      $('#' + $(this).attr('lnk') + '').text($(this).attr('Title'));
+
+      if ($(this).parent().attr('data_value') == '') {
+        answer_selected++;
+      }
+
+      $(this).parent().attr('data_value', onStar);
+
+      if (answer_selected >= total_controls) {
+        if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
+          $("#btn_rating").prop("disabled", false);
+        }
+      }
+
+    });
+
+    $('input[control="opt_radio"]').change(function () {
+
+      $('#rating_' + $(this).attr('question') + '').text($(this).val());
+
+      if ($('#rating_' + $(this).attr('question') + '').attr('data_value') == '') {
+        answer_selected++;
+      }
+      $('#rating_' + $(this).attr('question') + '').attr('data_value', $(this).attr('question'));
+
+      if (answer_selected >= total_controls) {
+        if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
+          $("#btn_rating").prop("disabled", false);
+        }
+      }
+    });
+
+    $('textarea').change(function () {
+
+      if ($(this).val() != '') {
 
         $('#rating_' + $(this).attr('question') + '').text($(this).val());
 
@@ -813,66 +836,46 @@
             $("#btn_rating").prop("disabled", false);
           }
         }
+      }
+      else {
+        $('#rating_' + $(this).attr('question') + '').attr('data_value', '');
+        answer_selected--;
+      }
+
+    });
+
+    $('#azvNr').change(function () {
+      if ($(this).val() != '') {
+        answer_selected++;
+      }
+      else {
+        answer_selected--;
+      }
+      if (answer_selected >= total_controls) {
+        if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
+          $("#btn_rating").prop("disabled", false);
+        }
+      }
+
+    });
+
+    $('select').change(function () {
+      valid_dates = true;
+      $(".date").each(function () {
+        if ($.trim($(this).val()).length == 0) {
+          valid_dates = false;
+        }
       });
 
-      $('textarea').change(function () {
+      if (valid_dates) {
+        $('#dob').val($('#dob_year').val() + '-' + $('#dob_month').val() + '-' + $('#dob_day').val());
+        $('#azv_last_visit').val($('#azv_last_visit_year').val() + '-' + $('#azv_last_visit_month').val() + '-' + $('#azv_last_visit_day').val());
 
-        if ($(this).val() != '') {
-
-          $('#rating_' + $(this).attr('question') + '').text($(this).val());
-
-          if ($('#rating_' + $(this).attr('question') + '').attr('data_value') == '') {
-            answer_selected++;
-          }
-          $('#rating_' + $(this).attr('question') + '').attr('data_value', $(this).attr('question'));
-
-          if (answer_selected >= total_controls) {
-            if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
-              $("#btn_rating").prop("disabled", false);
-            }
-          }
-        }
-        else {
-          $('#rating_' + $(this).attr('question') + '').attr('data_value', '');
-          answer_selected--;
-        }
-
-      });
-
-      $('#azvNr').change(function () {
-        if ($(this).val() != '') {
-          answer_selected++;
-        }
-        else {
-          answer_selected--;
-        }
         if (answer_selected >= total_controls) {
-          if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
-            $("#btn_rating").prop("disabled", false);
-          }
+          $("#btn_rating").prop("disabled", false);
         }
-
-      });
-
-      $('select').change(function () {
-        valid_dates = true;
-        $(".date").each(function () {
-          if ($.trim($(this).val()).length == 0) {
-            valid_dates = false;
-          }
-        });
-
-        if (valid_dates) {
-          $('#dob').val($('#dob_year').val() + '-' + $('#dob_month').val() + '-' + $('#dob_day').val());
-          $('#azv_last_visit').val($('#azv_last_visit_year').val() + '-' + $('#azv_last_visit_month').val() + '-' + $('#azv_last_visit_day').val());
-
-          if (answer_selected >= total_controls) {
-            $("#btn_rating").prop("disabled", false);
-          }
-        }
-      });
-   
-
+      }
+    });
 
     function rating_create_error(data) {
       console.log(data);
@@ -896,17 +899,6 @@
       loader(false);
       $("#btn_rating").prop("disabled", false);
     }
-
-    function isValidDate(s) {
-      var bits = s.split('/');
-      var d = new Date(bits[2] + '/' + bits[1] + '/' + bits[0]);
-      return !!(d && (d.getMonth() + 1) == bits[1] && d.getDate() == Number(bits[0]));
-    }
-
-    //Test it!
-    var currentDate = format_date('30/10/2019');
-    console.log(isValidDate(currentDate.toString()));
-    console.log(isValidDate('2019-10-30'))
 
   </script>
 

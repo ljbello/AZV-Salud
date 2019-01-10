@@ -40,6 +40,12 @@ function format_time(string_date) {
 	return h + ':' + m;
 
 }
+function isValidDate(s) {
+    var bits = s.split('-');
+    var d = new Date(bits[0] + '/' + bits[1] + '/' + bits[2]);
+    return !!(d && (d.getMonth() + 1) == bits[1] && d.getDate() == Number(bits[2]));
+  }
+
 
 function convertUTCDateToLocalDate(date) {
 	var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60);
