@@ -390,18 +390,20 @@
     var answer_selected = 0;
     var valid_dates = false;
 
-    $.ajax({
-      type: 'GET',
-      url: 'js_v2_2/DefQuestionAZV.json',
-      ContentType: "application/json",
-      async: false,
-      success: function (response) {
-        test_data = response;
-      }
-    });
+    // $.ajax({
+    //   type: 'GET',
+    //   url: 'js_v2_2/DefQuestionAZV.json',
+    //   ContentType: "application/json",
+    //   async: false,
+    //   success: function (response) {
+    //     test_data = response;
+    //   }
+    // });
+
+    azv_rating_list();
 
     $(document).ready(function () {
-      loader(true);
+      // loader(true);
 
       if (localStorage.getItem("azvNr")) {
         $('#azvNr').val(localStorage.getItem("azvNr"));
@@ -412,143 +414,10 @@
         $('#dob_year').val(localStorage.getItem("dob_year"));
       }
 
-      azv_rating_list_ok(test_data);
+      // azv_rating_list_ok(test_data);
       // azv_rating_list();
 
-      /* 1. Visualizing things on Hover - See next part for action on click */
-      $('#stars li').on('mouseover', function () {
-        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-
-        // Now highlight all the stars that's not after the current hovered star
-        $(this).parent().children('li.star').each(function (e) {
-          if (e < onStar) {
-            $(this).addClass('hover');
-          }
-          else {
-            $(this).removeClass('hover');
-          }
-        });
-
-      }).on('mouseout', function () {
-        $(this).parent().children('li.star').each(function (e) {
-          $(this).removeClass('hover');
-        });
-      });
-
-      /* 2. Action to perform on click */
-      $('#stars li').on('click', function () {
-
-        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
-        var stars = $(this).parent().children('li.star');
-
-        for (i = 0; i < stars.length; i++) {
-          $(stars[i]).removeClass('selected');
-        }
-
-        for (i = 0; i < onStar; i++) {
-          $(stars[i]).addClass('selected');
-        }
-
-        // JUST RESPONSE (Not needed)
-        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-        var msg = "";
-        if (ratingValue > 1) {
-          msg = "Thanks! You rated this " + ratingValue + " stars.";
-        }
-        else {
-          msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
-        }
-        responseMessage(msg);
-
-        $('#' + $(this).attr('lnk') + '').text($(this).attr('Title'));
-
-        if ($(this).parent().attr('data_value') == '') {
-          answer_selected++;
-        }
-
-        $(this).parent().attr('data_value', onStar);
-
-        if (answer_selected >= total_controls) {
-          if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
-            $("#btn_rating").prop("disabled", false);
-          }
-        }
-
-      });
-
-      $('input[control="opt_radio"]').change(function () {
-
-        $('#rating_' + $(this).attr('question') + '').text($(this).val());
-
-        if ($('#rating_' + $(this).attr('question') + '').attr('data_value') == '') {
-          answer_selected++;
-        }
-        $('#rating_' + $(this).attr('question') + '').attr('data_value', $(this).attr('question'));
-
-        if (answer_selected >= total_controls) {
-          if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
-            $("#btn_rating").prop("disabled", false);
-          }
-        }
-      });
-
-      $('textarea').change(function () {
-
-        if ($(this).val() != '') {
-
-          $('#rating_' + $(this).attr('question') + '').text($(this).val());
-
-          if ($('#rating_' + $(this).attr('question') + '').attr('data_value') == '') {
-            answer_selected++;
-          }
-          $('#rating_' + $(this).attr('question') + '').attr('data_value', $(this).attr('question'));
-
-          if (answer_selected >= total_controls) {
-            if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
-              $("#btn_rating").prop("disabled", false);
-            }
-          }
-        }
-        else {
-          $('#rating_' + $(this).attr('question') + '').attr('data_value', '');
-          answer_selected--;
-        }
-
-      });
-
-      $('#azvNr').change(function () {
-        if ($(this).val() != '') {
-          answer_selected++;
-        }
-        else {
-          answer_selected--;
-        }
-        if (answer_selected >= total_controls) {
-          if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
-            $("#btn_rating").prop("disabled", false);
-          }
-        }
-
-      });
-
-      $('select').change(function () {
-        valid_dates = true;
-        $(".date").each(function () {
-          if ($.trim($(this).val()).length == 0) {
-            valid_dates = false;
-          }
-        });
-
-        if (valid_dates) {
-          $('#dob').val($('#dob_year').val() + '-' + $('#dob_month').val() + '-' + $('#dob_day').val());
-          $('#azv_last_visit').val($('#azv_last_visit_year').val() + '-' + $('#azv_last_visit_month').val() + '-' + $('#azv_last_visit_day').val());
-
-          if (answer_selected >= total_controls) {
-            $("#btn_rating").prop("disabled", false);
-          }
-        }
-      });
-    });
+ });
 
     $('#btn_rating').click(function (e) {
       e.preventDefault();
@@ -625,12 +494,12 @@
     function azv_rating_list() {
       loader(true);
       $method = 'GET';
-      $url = server + 'rating';
+      $url = server + 'ratingquestions';
       $.ajax({
         type: $method,
         url: $url,
         ContentType: "application/json",
-        async: true,
+        async: false,
         headers: {
         },
         success: function (data) {
@@ -869,7 +738,140 @@
       }, 3500);
     });
 
+      /* 1. Visualizing things on Hover - See next part for action on click */
+      $('#stars li').on('mouseover', function () {
+        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
 
+        // Now highlight all the stars that's not after the current hovered star
+        $(this).parent().children('li.star').each(function (e) {
+          if (e < onStar) {
+            $(this).addClass('hover');
+          }
+          else {
+            $(this).removeClass('hover');
+          }
+        });
+
+      }).on('mouseout', function () {
+        $(this).parent().children('li.star').each(function (e) {
+          $(this).removeClass('hover');
+        });
+      });
+
+      /* 2. Action to perform on click */
+      $('#stars li').on('click', function () {
+
+        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+        var stars = $(this).parent().children('li.star');
+
+        for (i = 0; i < stars.length; i++) {
+          $(stars[i]).removeClass('selected');
+        }
+
+        for (i = 0; i < onStar; i++) {
+          $(stars[i]).addClass('selected');
+        }
+
+        // JUST RESPONSE (Not needed)
+        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+        var msg = "";
+        if (ratingValue > 1) {
+          msg = "Thanks! You rated this " + ratingValue + " stars.";
+        }
+        else {
+          msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+        }
+        responseMessage(msg);
+
+        $('#' + $(this).attr('lnk') + '').text($(this).attr('Title'));
+
+        if ($(this).parent().attr('data_value') == '') {
+          answer_selected++;
+        }
+
+        $(this).parent().attr('data_value', onStar);
+
+        if (answer_selected >= total_controls) {
+          if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
+            $("#btn_rating").prop("disabled", false);
+          }
+        }
+
+      });
+
+      $('input[control="opt_radio"]').change(function () {
+
+        $('#rating_' + $(this).attr('question') + '').text($(this).val());
+
+        if ($('#rating_' + $(this).attr('question') + '').attr('data_value') == '') {
+          answer_selected++;
+        }
+        $('#rating_' + $(this).attr('question') + '').attr('data_value', $(this).attr('question'));
+
+        if (answer_selected >= total_controls) {
+          if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
+            $("#btn_rating").prop("disabled", false);
+          }
+        }
+      });
+
+      $('textarea').change(function () {
+
+        if ($(this).val() != '') {
+
+          $('#rating_' + $(this).attr('question') + '').text($(this).val());
+
+          if ($('#rating_' + $(this).attr('question') + '').attr('data_value') == '') {
+            answer_selected++;
+          }
+          $('#rating_' + $(this).attr('question') + '').attr('data_value', $(this).attr('question'));
+
+          if (answer_selected >= total_controls) {
+            if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
+              $("#btn_rating").prop("disabled", false);
+            }
+          }
+        }
+        else {
+          $('#rating_' + $(this).attr('question') + '').attr('data_value', '');
+          answer_selected--;
+        }
+
+      });
+
+      $('#azvNr').change(function () {
+        if ($(this).val() != '') {
+          answer_selected++;
+        }
+        else {
+          answer_selected--;
+        }
+        if (answer_selected >= total_controls) {
+          if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
+            $("#btn_rating").prop("disabled", false);
+          }
+        }
+
+      });
+
+      $('select').change(function () {
+        valid_dates = true;
+        $(".date").each(function () {
+          if ($.trim($(this).val()).length == 0) {
+            valid_dates = false;
+          }
+        });
+
+        if (valid_dates) {
+          $('#dob').val($('#dob_year').val() + '-' + $('#dob_month').val() + '-' + $('#dob_day').val());
+          $('#azv_last_visit').val($('#azv_last_visit_year').val() + '-' + $('#azv_last_visit_month').val() + '-' + $('#azv_last_visit_day').val());
+
+          if (answer_selected >= total_controls) {
+            $("#btn_rating").prop("disabled", false);
+          }
+        }
+      });
+   
 
 
     function rating_create_error(data) {
