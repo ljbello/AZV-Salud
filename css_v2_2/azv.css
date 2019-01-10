@@ -442,3 +442,20 @@ button[disabled]{
 .azv-telf{
   color: #919191;
 }
+
+.modal-header {
+  background: #00aed9;
+  border-top-right-radius: 9px;
+  border-top-left-radius: 9px
+}
+.heading{
+  color: #ffffff;
+}
+
+.modal-dialog{
+  display: block;
+  top: 100px;
+}
+.modal-content{
+border-radius: 9px;
+}
