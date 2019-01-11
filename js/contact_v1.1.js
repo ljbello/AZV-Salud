@@ -4,7 +4,6 @@ $("#contact_us").submit(function (e) {
   $("#contact-us-button").prop("disabled", true);
 
   if ($('#first_name').val() != '' && $('#last_name').val() != '' && $('#phone_number').val() != '' && $('#email').val() != '' && $('#subject').val() != '' && $('#message').val() != '') {
-
     var datastring = '{ "first_name": "' + $('#first_name').val() + '",';
     datastring += ' "last_name": "' + $('#last_name').val() + '",';
     datastring += ' "phone_number": "' + $('#phone_number').val() + '",';

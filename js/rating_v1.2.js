@@ -15,7 +15,6 @@
       $('#dob_month').val(localStorage.getItem("dob_month"));
       $('#dob_year').val(localStorage.getItem("dob_year"));
     }
-
   });
 
   $('#btn_rating').click(function (e) {
@@ -41,13 +40,11 @@
           json_questions_value += ',';
         }
         json_questions_value += '"' + $(this).children().attr('question') + '": "' + $('#rating_' + $(this).children().attr('data_value') + '').text() + '"';
-
       });
 
       json_general_value += json_questions_value + '} } ';
 
       if ($('#azvNr').val() != '' && $('#dob').val() != '' && $('#azv_last_visit').val() != '') {
-
 
         if (isValidDate($('#dob').val()) && isValidDate($('#azv_last_visit').val())) {
 
@@ -78,7 +75,6 @@
           });
           loader(false);
           $("#btn_rating").prop("disabled", false);
-
         }
       }
       else {
@@ -91,7 +87,6 @@
         loader(false);
         $("#btn_rating").prop("disabled", false);
       }
-
     }
     else {
       $("body").overhang({
@@ -127,17 +122,15 @@
 
   function azv_rating_list_ok(data) {
     var html_questions = '';
-
     var data_length = data.length;
-    if (data_length > 0) {
 
+    if (data_length > 0) {
       $.each(data, function (i, item) {
         total_controls++;
         html_questions = '<div class="row azv-row">';
 
         switch (item.type) {
           case "radio":
-
             html_questions += '<div class="form-group">';
             html_questions += '<div class="text-center rating-radio rating-control">';
             html_questions += '<h5 question="Question ' + (i + 1) + '" id="' + (i + 1) + '" data_value=""><b>' + (i + 1) + '. ' + item.questions + '</b></h5>';
@@ -195,10 +188,8 @@
 
         html_questions += '</div>';
         html_questions += '<hr class="azv-hr">';
-
         $('#questions').append(html_questions);
         html_questions = '';
-
       });
     }
     loader(false);
@@ -213,11 +204,10 @@
     loader(true);
     $method = 'POST';
     $url = server + 'validateinsured';
-
     var datastring = '{ "azv_number": "' + azvNr + '",';
     datastring += ' "azv_dob": "' + dob + '"}';
-    $.ajax({
 
+    $.ajax({
       type: $method,
       url: $url,
       dataType: "json",
@@ -237,7 +227,6 @@
             duration: 3,
             overlay: true
           });
-
         }
         else {
           $("body").overhang({
@@ -280,7 +269,6 @@
 
   function rating_create_ok(data) {
     if (data.statuscode == 201) {
-
       $('#confirm_modal').click();
     }
     else if (data.statuscode == 401) {
@@ -294,7 +282,7 @@
     else if (data.statuscode == 429) {
       $("body").overhang({
         type: "warn",
-        message: "Rating not possible. You already sumitted a rating this month..",
+        message: "Rating not possible. You already sumitted a rating this month.",
         duration: 3,
         overlay: true
       });
@@ -318,7 +306,6 @@
     $('#modal_save_data').removeClass('hidden');
     $('#modal_footer').addClass('hidden');
 
-
     localStorage.setItem("azvNr", $('#azvNr').val());
     localStorage.setItem("dob_day", $('#dob_day').val());
     localStorage.setItem("dob_month", $('#dob_month').val());
@@ -336,7 +323,6 @@
     $('#modal_save_data').removeClass('hidden');
     $('#modal_footer').addClass('hidden');
 
-
     localStorage.removeItem("azvNr");
     localStorage.removeItem("dob_day");
     localStorage.removeItem("dob_month");
@@ -346,12 +332,8 @@
       window.location.href = 'home.html';
     }, 3500);
   });
-
-  /* 1. Visualizing things on Hover - See next part for action on click */
   $('#stars li').on('mouseover', function () {
-    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-
-    // Now highlight all the stars that's not after the current hovered star
+    var onStar = parseInt($(this).data('value'), 10); 
     $(this).parent().children('li.star').each(function (e) {
       if (e < onStar) {
         $(this).addClass('hover');
@@ -367,10 +349,9 @@
     });
   });
 
-  /* 2. Action to perform on click */
   $('#stars li').on('click', function () {
 
-    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+    var onStar = parseInt($(this).data('value'), 10);
     var stars = $(this).parent().children('li.star');
 
     for (i = 0; i < stars.length; i++) {
@@ -381,7 +362,6 @@
       $(stars[i]).addClass('selected');
     }
 
-    // JUST RESPONSE (Not needed)
     var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
     var msg = "";
     if (ratingValue > 1) {
@@ -405,18 +385,15 @@
         $("#btn_rating").prop("disabled", false);
       }
     }
-
   });
 
   $('input[control="opt_radio"]').change(function () {
 
     $('#rating_' + $(this).attr('question') + '').text($(this).val());
-
     if ($('#rating_' + $(this).attr('question') + '').attr('data_value') == '') {
       answer_selected++;
     }
     $('#rating_' + $(this).attr('question') + '').attr('data_value', $(this).attr('question'));
-
     if (answer_selected >= total_controls) {
       if ($('#dob').val() != '' && $('#azv_last_visit').val() != '') {
         $("#btn_rating").prop("disabled", false);
@@ -425,9 +402,7 @@
   });
 
   $('textarea').change(function () {
-
     if ($(this).val() != '') {
-
       $('#rating_' + $(this).attr('question') + '').text($(this).val());
 
       if ($('#rating_' + $(this).attr('question') + '').attr('data_value') == '') {
@@ -460,7 +435,6 @@
         $("#btn_rating").prop("disabled", false);
       }
     }
-
   });
 
   $('select').change(function () {
@@ -470,7 +444,6 @@
         valid_dates = false;
       }
     });
-
     if (valid_dates) {
       $('#dob').val($('#dob_year').val() + '-' + $('#dob_month').val() + '-' + $('#dob_day').val());
       $('#azv_last_visit').val($('#azv_last_visit_year').val() + '-' + $('#azv_last_visit_month').val() + '-' + $('#azv_last_visit_day').val());
@@ -490,7 +463,14 @@
         duration: 3,
         overlay: true
       });
-
+    }
+    else if (data.status == 429) {
+      $("body").overhang({
+        type: "warn",
+        message: "Rating not possible. You already sumitted a rating this month.",
+        duration: 3,
+        overlay: true
+      });
     }
     else {
       $("body").overhang({
