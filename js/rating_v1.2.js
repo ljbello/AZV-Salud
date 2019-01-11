@@ -39,7 +39,7 @@
         if (index != 0) {
           json_questions_value += ',';
         }
-        json_questions_value += '"' + $(this).children().attr('question') + '": "' + $('#rating_' + $(this).children().attr('data_value') + '').text() + '"';
+        json_questions_value += '"' + $(this).children().attr('question') + '": "' + $('#rating_' + (index+1)).text() + '"';
       });
 
       json_general_value += json_questions_value + '} } ';
