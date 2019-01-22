@@ -49,8 +49,8 @@ $(function () {
           dr += '</div>';
           dr += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.city + '</p></div>';
           dr += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
-          // dr += '<a  class="azv-telf"href="tel:+29' + item.phonenumber + '"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</a>';
-          dr += '<p>  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
+          dr += '<a  class="azv-telf"href="tel:+29' + item.phonenumber + '"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</a>';
+          // dr += '<p>  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
 
           dr += '</div>';
           dr += '</div>';
@@ -84,8 +84,8 @@ $(function () {
           dentist += '</div>';
           dentist += '<div class="col-xs-5 col-sm-5 col-md-5 home-text-middle"><p class="location-name"><b>' + item.name + '</b></p><p class="location-name">' + item.city + '</p></div>';
           dentist += '<div class="col-xs-3 col-sm-3 col-md-3 home-text-right">';
-          // dentist += '<a  class="azv-telf"href="tel:+29' + item.phonenumber + '"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</a>';
-          dentist += '<p>  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
+          dentist += '<a  class="azv-telf"href="tel:+29' + item.phonenumber + '"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</a>';
+          // dentist += '<p>  <i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;' + item.phonenumber + '</p>';
           dentist += '</div>';
           dentist += '</div>';
           if (i != (data_length - 1)) {

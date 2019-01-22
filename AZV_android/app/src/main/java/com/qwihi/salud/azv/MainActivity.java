@@ -11,6 +11,9 @@ import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.content.Intent;
+import android.net.Uri;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,11 +27,25 @@ public class MainActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://azvbackend.qwihi.com/app/index.html");
+        webView.loadUrl("https://azvbackend.qwihi.com/app/inde.html");
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
+        webView.setWebViewClient(new InternalWebViewClient());
+    }
+
+    private class InternalWebViewClient extends WebViewClient {
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if (url.indexOf("tel:") > -1) {
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(url)));
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     @Override
