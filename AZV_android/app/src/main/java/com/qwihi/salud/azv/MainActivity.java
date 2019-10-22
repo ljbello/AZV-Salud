@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://azvbackend.qwihi.com/app/inde.html");
-
+        webView.loadUrl("https://azvbackend.qwihi.com/app/index.html");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
