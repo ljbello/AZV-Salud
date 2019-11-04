@@ -1,0 +1,101 @@
+﻿@using AZVAdmin.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h3 class="box-title m-b-20">Sign In</h3>
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+    <div class="form-group ">
+        <div class="col-xs-12">
+            @*<input class="form-control" type="text" required="" placeholder="Username">*@
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "text", @required = "", @placeholder = "Username" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @type = "password", @required = "", @placeholder = "Password" })
+        </div>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="d-flex no-block align-items-center">
+            <div class="checkbox checkbox-primary p-t-0">
+                <input id="checkbox-signup" type="checkbox">
+                <label for="checkbox-signup"> Remember me </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center m-t-20">
+        <div class="col-xs-12">
+            <button class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button>
+        </div>
+    </div>
+
+}
+
+@section Scripts {
+    <script>
+
+        var set_cookie = false;
+        $(document).ready(function () {
+            isCookieSet()
+        });
+
+        $('#checkbox-signup').click(function () {
+            if ($(this).is(':checked')) {
+                setCookie(true)
+            }
+            else {
+                setCookie(false)
+            }
+        });
+
+        function setCookie(set_cookie) {
+            if (set_cookie) {
+                var d = new Date();
+                d.setTime(d.getTime() + (100 * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = "c_username=" + $('#Email').val();
+                document.cookie = "c_password=" + $('#Password').val();
+                document.cookie = expires + ";path=/";
+            }
+            else {
+                var expires = "expires=0"
+                document.cookie = "c_username=0"
+                document.cookie = "c_password=0"
+                document.cookie = expires + ";path=/";
+            }
+        }
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        };
+
+        function isCookieSet() {
+            var _username = getCookie("c_username");
+            var _password = getCookie("c_password");
+
+            if (_username != "0" && _username != "" && _password != "0" && _password != "") {
+                $('#Email').val(getCookie("c_username"));
+                $('#Password').val(getCookie("c_password"));
+                $('#checkbox-signup').prop("checked", "checked");
+                set_cookie = true;
+            }
+        }
+    </script>
+}

@@ -1,0 +1,60 @@
+﻿.user-profile .profile-text > a {
+  background: rgb(33, 42, 51) !important;
+}
+.wu-blue {
+    color: #009ec5 !important;
+}
+.p-t-5{
+    padding-top:5px;
+}
+/*.scroll-sidebar, .sidebar-nav {
+    background: #a7a7a7 !important;
+}
+.wu-gray {
+    background: #a7a7a7 !important;
+}
+.sidebar-nav > ul > li > a i {
+    color: white !important;
+}*/
+
+.card-outline-wu-blue{
+    border-color: #009ec5;
+}
+
+.card-outline-wu-blue .card-header {
+    background: #009ec5;
+    border-color: #009ec5;
+}
+.bg-map {
+    background-image: url("../../assets/images/map-bg.jpg");
+}
+.bg-transparet {
+    opacity: 0.1;
+    filter: alpha(opacity=60);
+}
+.login-image {
+    background-image: url("../../assets/images/login-image.jpg");
+    background-repeat: no-repeat;
+    background-position: 90%0%;
+    background-size: cover;
+    height: 100%;
+}
+.user-profile-image {
+    background: url("../../assets/images/user-profile-image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.bigger-font-70{
+    font-size:70px;
+}
+.bigger-font-50 {
+    font-size: 50px;
+}
+.topbar {
+    z-index: 150 !important;
+    background-color: #FFFFFF !important;
+}
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+    stroke: #44c8e8 !important;
+}

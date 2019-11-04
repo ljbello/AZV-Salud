@@ -1,0 +1,37 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/TemplateAssets/assets/images/favicon-32x32.png">
+    <title>@ViewBag.Title - AZV Messages</title>
+    @Styles.Render("~/TemplateAssets/css")
+</head>
+<body class="fix-header fix-sidebar card-no-border">
+    <section id="wrapper">
+        <div class="login-register login-image">
+                <div class="login-box card">
+                    <div class="row justify-content-center">
+                    </div>
+                    <div class="card-body">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+</section>
+    @Scripts.Render("~/TemplateAssets/scripts")
+    @RenderSection("scripts", required: false)
+    <script>
+    ! function (window, document, $) {
+            "use strict";
+            $("input,select,textarea").not("[type=submit]").jqBootstrapValidation()
+        }(window, document, jQuery);
+        console.log(' pathname => ' + window.location.pathname)
+    </script>
+
+</body>
+</html>

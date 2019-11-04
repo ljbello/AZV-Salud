@@ -1,0 +1,103 @@
+﻿@model AZVAdmin.Models.RegisterViewModel
+@{
+    ViewBag.Title = "New User";
+}
+
+@using (Html.BeginForm("EditUser", "Manage", FormMethod.Post, new { id = "frm_register" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.UserId)
+    <div class="row justify-content-center">
+        <div class="col-lg-11">
+            <div class="card card-outline-wu-blue">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">User</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-body">
+                        <h3 class="box-title">Create a new User</h3>
+                        <hr class="m-t-0 m-b-40">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label text-right col-md-3" })
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control required" } })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label text-right col-md-3" })
+
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control required" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label text-right col-md-3" })
+
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control required", } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Role</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-control required", @required = "" })
+                                        @Html.ValidationMessageFor(model => model.Role.Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label text-right col-md-3" })
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control required" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label text-right col-md-3" })
+
+                                    <div class="col-md-9">
+                                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control required" } })
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-actions">
+                        <div class="d-flex flex-row-reverse">
+                            <div class="p-2">
+                                <button id="add_user" name="add_user" type="submit" value="EditUser" class="btn waves-effect waves-light btn-block btn-warning">
+                                    Save
+                                </button>
+                            </div>
+                            <div class="p-2">
+                                <a class="btn waves-effect waves-light btn-block btn-secondary" href="@Url.Action("UserList","Manage")">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}

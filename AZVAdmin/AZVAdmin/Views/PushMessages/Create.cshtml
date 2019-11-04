@@ -1,0 +1,84 @@
+﻿@model AZVAdmin.Models.PushMessage
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "PushMessages", FormMethod.Post, new { id = "frm_messages" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row justify-content-center">
+        <div class="col-lg-11">
+            <div class="card card-outline-wu-blue">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">message</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" class="form-horizontal">
+                        <div class="form-body">
+                            <h3 class="box-title">Create a new Message</h3>
+                            <hr class="m-t-0 m-b-40">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label text-right col-md-2" })
+                                        <div class="col-md-9">
+                                            <div class="controls">
+                                                <textarea name="Message" id="Message" class="form-control" placeholder="Write the Message here" aria-invalid="false" required  required=""></textarea>
+                                                <div class="help-block"></div>
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label text-right col-md-2"})
+
+                                        <div class="col-md-9">
+                                            @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control", @required = "", @type = "url" } })
+                                            @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-2">Section</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control custom-select" id="Segment" name="Segment">
+                                                <option value="Subscribed Users">All Users</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-actions">
+                                <div class="d-flex flex-row-reverse">
+                                    <div class="p-2">
+                                        <button id="add_message" name="add_message" type="submit" value="Create" class="btn waves-effect waves-light btn-block btn-success">
+                                            Send
+                                        </button>
+                                    </div>
+                                    <div class="p-2">
+                                        <a class="btn waves-effect waves-light btn-block btn-secondary" href="@Url.Action("Index","PushMessages")">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+}

@@ -1,0 +1,192 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/TemplateAssets/assets/images/favicon-32x32.png">
+    <title>@ViewBag.Title - AZV Messages</title>
+    @Styles.Render("~/TemplateAssets/css")
+</head>
+<body class="fix-header fix-sidebar card-no-border">
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span>
+                            <!-- dark Logo text -->
+                            <img src="~/TemplateAssets/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo text -->
+                            <img src="~/TemplateAssets/assets/images/logo-azv.svg" height="25px" width="" class="light-logo" alt="homepage" />
+                        </span>
+                        <!-- Logo icon -->
+                        <b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            @*<img src="~/TemplateAssets/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />*@
+                            <!-- Light Logo icon -->
+                            @*<img src="~/TemplateAssets/assets/images/logo-azv.svg" alt="homepage" style="width: 54px"; class="light-logo p-t-5" />*@
+                        </b>
+                    </a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark p-b-0" href="javascript:void(0)"><i class="ti-menu" style="color: #009efb;"></i></a> </li>
+
+                    </ul>
+                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/TemplateAssets/assets/images/users/icon.png" alt="user" class="profile-pic" /></a>
+                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><img src="~/TemplateAssets/assets/images/users/icon.png" alt="user"></div>
+                                            <div class="u-text">
+                                                <h4>@Html.Raw(Session["Name"])</h4>
+                                                <p class="text-muted">@Html.Raw(Session["Email"])</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="ti-user"></i> My Profile<small class="text-info"> Soon</small></a></li>
+                                    <li><a href="#"><i class="ti-wallet"></i> My Stats<small class="text-info"> Soon</small></a></li>
+
+                                    <li role="separator" class="divider"></li>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i> Logout</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- User profile -->
+                <div class="user-profile user-profile-image">
+
+                    <div class="profile-img"> <img src="~/TemplateAssets/assets/images/users/icon.png" alt="user" /> </div>
+
+                    <div class="profile-text">
+                        <a href="#" class="dropdown-toggle link u-dropdown text-blue" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            @Html.Raw(Session["Name"])<span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu animated flipInY">
+                            <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                            <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My stats</a>
+                            <div class="dropdown-divider"></div>
+
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a href="javascript:document.getElementById('logoutForm').submit()"class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                                  
+                                }
+                            }
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">PERSONAL</li>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+
+                            <li>
+                                <a href="@Url.Action("Index", "PushMessages")">
+                                    <i class="fas fa-desktop" aria-hidden="true"></i>
+                                    <span> Messages</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("UserList", "Manage")">
+                                    <i class="fas fa-user" aria-hidden="true"></i>
+                                    <span> Users</span>
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("User"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "PushMessages")">
+                                    <i class="fas fa-desktop" aria-hidden="true"></i>
+                                    <span> Messages</span>
+                                </a>
+                            </li>
+
+                        }
+
+                    </ul>
+                </nav>
+                <div class="sidebar-footer">
+                    @*<a href="" class="link float-right" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power "></i></a>*@
+                </div>
+            </div>
+        </aside>
+
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col-md-5 col-8 align-self-center">
+                        <h3 class="wu-blue m-b-0 m-t-0">Dashboard</h3>
+                        <ol class="breadcrumb" id="zone_name">
+                            <li class="breadcrumb-item" id="1_area"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li class="breadcrumb-item active" id="Zone"></li>
+                            <li class="breadcrumb-item active d-none" id="Zone2"></li>
+                        </ol>
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+            <footer class="footer">
+                &copy; @DateTime.Now.Year - Madworks Global NV  - madworksglobal.com
+            </footer>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/TemplateAssets/scripts")
+    @RenderSection("scripts", required: false)
+    <script>
+    ! function (window, document, $) {
+            "use strict";
+            $("input,select,textarea").not("[type=submit]").jqBootstrapValidation()
+        }(window, document, jQuery);
+        var path = window.location.pathname;
+        path = path.substr(1);
+        path = path.split("/");
+
+        $('#Zone').text(path[0]);
+        if (path[1] != '' && path[1] != null) {
+            $('#Zone2').text(path[1]);
+            $('#Zone2').removeClass('d-none');
+        }
+        
+        console.log(' pathname => ' + path)
+    </script>
+
+</body>
+</html>
