@@ -12,5 +12,7 @@ public class ExampleApplication extends Application {
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
+        OneSignal.promptLocation();
+        OneSignal.setLocationShared(true);
     }
 }
